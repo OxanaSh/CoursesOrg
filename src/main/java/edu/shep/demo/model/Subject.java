@@ -10,7 +10,7 @@ public class Subject {
     @Id
     private String id;
     private String name;
-    private int teacherCode;
+    private Teacher teacher;
     private String groupNumber;
     private double hours;
 
@@ -18,11 +18,20 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(String name, int teacherCode, String groupNumber, double hours) {
+
+    public Subject(String name, Teacher teacher, String groupNumber, double hours) {
         this.name = name;
-        this.teacherCode = teacherCode;
+        this.teacher = teacher;
         this.groupNumber = groupNumber;
         this.hours = hours;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public String getId() {
@@ -41,13 +50,6 @@ public class Subject {
         this.name = name;
     }
 
-    public int getTeacherCode() {
-        return teacherCode;
-    }
-
-    public void setTeacherCode(int teacherCode) {
-        this.teacherCode = teacherCode;
-    }
 
     public String getGroupNumber() {
         return groupNumber;
@@ -66,28 +68,11 @@ public class Subject {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Subject subject = (Subject) o;
-        return teacherCode == subject.teacherCode &&
-                Double.compare(subject.hours, hours) == 0 &&
-                Objects.equals(id, subject.id) &&
-                Objects.equals(name, subject.name) &&
-                Objects.equals(groupNumber, subject.groupNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, teacherCode, groupNumber, hours);
-    }
-
-    @Override
     public String toString() {
         return "Subject{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", teacherCode=" + teacherCode +
+                ", teacher=" + teacher +
                 ", groupNumber='" + groupNumber + '\'' +
                 ", hours=" + hours +
                 '}';
