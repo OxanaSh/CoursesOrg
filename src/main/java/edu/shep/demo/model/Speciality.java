@@ -12,17 +12,25 @@ public class Speciality {
     private String id;
     private int code;
     private String name;
-    private List<StudentGroup> groups;
+    private List<Subject> subjects;
+
 
     public Speciality() {
     }
 
-    public Speciality(int code, String name, List<StudentGroup> groups) {
+    public Speciality(int code, String name, List<Subject> subjects) {
         this.code = code;
         this.name = name;
-        this.groups = groups;
+        this.subjects = subjects;
     }
 
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
 
     public String getId() {
         return id;
@@ -48,12 +56,15 @@ public class Speciality {
         this.name = name;
     }
 
-    public List<StudentGroup> getGroups() {
-        return groups;
-    }
 
-    public void setGroups(List<StudentGroup> groups) {
-        this.groups = groups;
+    @Override
+    public String toString() {
+        return "Speciality{" +
+                "id='" + id + '\'' +
+                ", code=" + code +
+                ", name='" + name + '\'' +
+                ", subjects=" + subjects +
+                '}';
     }
 
     @Override
@@ -64,21 +75,11 @@ public class Speciality {
         return code == that.code &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(groups, that.groups);
+                Objects.equals(subjects, that.subjects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, code, name, groups);
-    }
-
-    @Override
-    public String toString() {
-        return "Speciality{" +
-                "id='" + id + '\'' +
-                ", code=" + code +
-                ", name='" + name + '\'' +
-                ", groups=" + groups +
-                '}';
+        return Objects.hash(id, code, name, subjects);
     }
 }

@@ -11,7 +11,6 @@ public class Subject {
     private String id;
     private String name;
     private Teacher teacher;
-    private String groupNumber;
     private double hours;
 
 
@@ -19,10 +18,9 @@ public class Subject {
     }
 
 
-    public Subject(String name, Teacher teacher, String groupNumber, double hours) {
+    public Subject(String name, Teacher teacher, double hours) {
         this.name = name;
         this.teacher = teacher;
-        this.groupNumber = groupNumber;
         this.hours = hours;
     }
 
@@ -51,14 +49,6 @@ public class Subject {
     }
 
 
-    public String getGroupNumber() {
-        return groupNumber;
-    }
-
-    public void setGroupNumber(String groupNumber) {
-        this.groupNumber = groupNumber;
-    }
-
     public double getHours() {
         return hours;
     }
@@ -72,8 +62,7 @@ public class Subject {
         return "Subject{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", teacher=" + teacher +
-                ", groupNumber='" + groupNumber + '\'' +
+                ", teacher=" + teacher +'\''+
                 ", hours=" + hours +
                 '}';
     }

@@ -9,26 +9,17 @@ import java.util.Objects;
 public class Student {
     @Id
     private String id;
-    private String name;
-    private String surname;
-    private String patronymic;
+    private Person person;
+    private String password;
     private String email;
+
 
     public Student() {
     }
 
-    public Student(String id, String name, String surname, String patronymic, String email) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.email = email;
-    }
-
-    public Student(String name, String surname, String patronymic, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
+    public Student(Person person, String password, String email) {
+        this.person = person;
+        this.password = password;
         this.email = email;
     }
 
@@ -40,28 +31,20 @@ public class Student {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -76,9 +59,8 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
+                ", person=" + person +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
@@ -89,15 +71,13 @@ public class Student {
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
         return Objects.equals(id, student.id) &&
-                Objects.equals(name, student.name) &&
-                Objects.equals(surname, student.surname) &&
-                Objects.equals(patronymic, student.patronymic) &&
+                Objects.equals(person, student.person) &&
+                Objects.equals(password, student.password) &&
                 Objects.equals(email, student.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, patronymic, email);
+        return Objects.hash(id, person, password, email);
     }
-
 }

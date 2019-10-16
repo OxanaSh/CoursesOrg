@@ -14,6 +14,8 @@ public class StudentGroup {
     private String department;
     private List<Student> students;
     private LessonForm formOfStudying;
+    private Speciality speciality;
+
 
     public StudentGroup() {
     }

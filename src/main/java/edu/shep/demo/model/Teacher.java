@@ -10,24 +10,19 @@ import java.util.Objects;
 public class Teacher {
     @Id
     private String id;
-    private String name;
-    private String surname;
-    private String patronymic;
-    private String phoneNumber;
+    private Person person;
     private Degree degree;
-    private LocalDate startOfWork;
-
+    private LocalDate experience;
+    private String password;
 
     public Teacher() {
     }
 
-    public Teacher(String name, String surname, String patronymic, String phoneNumber, Degree degree, LocalDate startOfWork) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.phoneNumber = phoneNumber;
+    public Teacher(Person person, Degree degree, LocalDate experience, String password) {
+        this.person = person;
         this.degree = degree;
-        this.startOfWork = startOfWork;
+        this.experience = experience;
+        this.password = password;
     }
 
     public String getId() {
@@ -38,36 +33,12 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public Degree getDegree() {
@@ -78,24 +49,30 @@ public class Teacher {
         this.degree = degree;
     }
 
-    public LocalDate getStartOfWork() {
-        return startOfWork;
+    public LocalDate getExperience() {
+        return experience;
     }
 
-    public void setStartOfWork(LocalDate startOfWork) {
-        this.startOfWork = startOfWork;
+    public void setExperience(LocalDate experience) {
+        this.experience = experience;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "Teacher{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", person=" + person +
                 ", degree=" + degree +
-                ", startOfWork=" + startOfWork +
+                ", experience=" + experience +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -105,16 +82,14 @@ public class Teacher {
         if (o == null || getClass() != o.getClass()) return false;
         Teacher teacher = (Teacher) o;
         return Objects.equals(id, teacher.id) &&
-                Objects.equals(name, teacher.name) &&
-                Objects.equals(surname, teacher.surname) &&
-                Objects.equals(patronymic, teacher.patronymic) &&
-                Objects.equals(phoneNumber, teacher.phoneNumber) &&
+                Objects.equals(person, teacher.person) &&
                 degree == teacher.degree &&
-                Objects.equals(startOfWork, teacher.startOfWork);
+                Objects.equals(experience, teacher.experience) &&
+                Objects.equals(password, teacher.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, patronymic, phoneNumber, degree, startOfWork);
+        return Objects.hash(id, person, degree, experience, password);
     }
 }
