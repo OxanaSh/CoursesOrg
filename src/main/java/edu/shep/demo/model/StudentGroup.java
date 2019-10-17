@@ -11,20 +11,16 @@ public class StudentGroup {
     @Id
     private String id;
     private String groupNumber;
-    private String department;
-    private List<Student> students;
     private LessonForm formOfStudying;
     private Speciality speciality;
-
 
     public StudentGroup() {
     }
 
-    public StudentGroup(String groupNumber, String department, List<Student> students, LessonForm formOfStudying) {
+    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality) {
         this.groupNumber = groupNumber;
-        this.department = department;
-        this.students = students;
         this.formOfStudying = formOfStudying;
+        this.speciality = speciality;
     }
 
     public String getId() {
@@ -43,23 +39,6 @@ public class StudentGroup {
         this.groupNumber = groupNumber;
     }
 
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
     public LessonForm getFormOfStudying() {
         return formOfStudying;
     }
@@ -68,14 +47,22 @@ public class StudentGroup {
         this.formOfStudying = formOfStudying;
     }
 
+    public Speciality getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
+    }
+
+
     @Override
     public String toString() {
         return "StudentGroup{" +
                 "id='" + id + '\'' +
                 ", groupNumber='" + groupNumber + '\'' +
-                ", department='" + department + '\'' +
-                ", students=" + students +
                 ", formOfStudying=" + formOfStudying +
+                ", speciality=" + speciality +
                 '}';
     }
 
@@ -86,13 +73,12 @@ public class StudentGroup {
         StudentGroup that = (StudentGroup) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(groupNumber, that.groupNumber) &&
-                Objects.equals(department, that.department) &&
-                Objects.equals(students, that.students) &&
-                formOfStudying == that.formOfStudying;
+                formOfStudying == that.formOfStudying &&
+                Objects.equals(speciality, that.speciality);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, groupNumber, department, students, formOfStudying);
+        return Objects.hash(id, groupNumber, formOfStudying, speciality);
     }
 }

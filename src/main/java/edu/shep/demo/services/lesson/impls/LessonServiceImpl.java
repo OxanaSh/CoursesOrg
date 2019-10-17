@@ -17,26 +17,28 @@ public class LessonServiceImpl implements ILessonService {
 
     @Override
     public List<Lesson> getAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Lesson get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Lesson create(Lesson lesson) {
-        return null;
+        return repository.save(lesson);
     }
 
     @Override
     public Lesson update(Lesson lesson) {
-        return null;
+        return repository.save(lesson);
     }
 
     @Override
     public Lesson delete(String id) {
-        return null;
+        Lesson lesson = this.get(id);
+        repository.deleteById(id);
+        return lesson;
     }
 }

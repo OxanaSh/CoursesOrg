@@ -15,24 +15,21 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements IStudentService {
-
-    List<Student> students = new ArrayList<>(
-            Arrays.asList(
-                new Student(new Person("Basil", "Ivanov", "Ivanov", LocalDate.now(), "098766631"), "basil", "basil@gmail.com"),
-                new Student(new Person("Peter", "Ivanov", "Ivanov", LocalDate.now(), "098766631"), "basil", "basil@gmail.com"),
-                new Student(new Person("Vasya", "Ivanov", "Ivanov", LocalDate.now(), "098766631"), "basil", "basil@gmail.com")
-    ));
-
-
     @Autowired
     StudentRepository repository;
 
+
+
+
+
     @PostConstruct
     void init(){
-        repository.deleteAll();
-        repository.saveAll(students);
+       //repository.deleteAll();
+       //repository.saveAll();
     }
 
+    //check
+    public List<Student> getAllByGroupId(){return repository.getAllByGroup_IdOrderByPersonAsc();}
 
 
     @Override
@@ -42,21 +39,23 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public Student get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Student create(Student student) {
-        return null;
+        return repository.save(student);
     }
 
     @Override
     public Student update(Student student) {
-        return null;
+        return repository.save(student);
     }
 
     @Override
     public Student delete(String id) {
-        return null;
+        Student student = this.get(id);
+        repository.deleteById(id);
+        return student;
     }
 }

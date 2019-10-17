@@ -14,15 +14,17 @@ public class Teacher {
     private Degree degree;
     private LocalDate experience;
     private String password;
+    private String email;
 
     public Teacher() {
     }
 
-    public Teacher(Person person, Degree degree, LocalDate experience, String password) {
+    public Teacher(Person person, Degree degree, LocalDate experience, String password, String email) {
         this.person = person;
         this.degree = degree;
         this.experience = experience;
         this.password = password;
+        this.email = email;
     }
 
     public String getId() {
@@ -65,6 +67,15 @@ public class Teacher {
         this.password = password;
     }
 
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Teacher{" +
@@ -73,6 +84,7 @@ public class Teacher {
                 ", degree=" + degree +
                 ", experience=" + experience +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 
@@ -85,11 +97,12 @@ public class Teacher {
                 Objects.equals(person, teacher.person) &&
                 degree == teacher.degree &&
                 Objects.equals(experience, teacher.experience) &&
-                Objects.equals(password, teacher.password);
+                Objects.equals(password, teacher.password) &&
+                Objects.equals(email, teacher.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, person, degree, experience, password);
+        return Objects.hash(id, person, degree, experience, password, email);
     }
 }

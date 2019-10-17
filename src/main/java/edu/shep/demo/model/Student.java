@@ -12,15 +12,24 @@ public class Student {
     private Person person;
     private String password;
     private String email;
-
+    private StudentGroup group;
 
     public Student() {
     }
 
-    public Student(Person person, String password, String email) {
+    public Student(Person person, String password, String email, StudentGroup group) {
         this.person = person;
         this.password = password;
         this.email = email;
+        this.group = group;
+    }
+
+    public StudentGroup getGroup() {
+        return group;
+    }
+
+    public void setGroup(StudentGroup group) {
+        this.group = group;
     }
 
     public String getId() {
@@ -55,6 +64,7 @@ public class Student {
         this.email = email;
     }
 
+
     @Override
     public String toString() {
         return "Student{" +
@@ -62,6 +72,7 @@ public class Student {
                 ", person=" + person +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", group=" + group +
                 '}';
     }
 
@@ -73,11 +84,12 @@ public class Student {
         return Objects.equals(id, student.id) &&
                 Objects.equals(person, student.person) &&
                 Objects.equals(password, student.password) &&
-                Objects.equals(email, student.email);
+                Objects.equals(email, student.email) &&
+                Objects.equals(group, student.group);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, person, password, email);
+        return Objects.hash(id, person, password, email, group);
     }
 }

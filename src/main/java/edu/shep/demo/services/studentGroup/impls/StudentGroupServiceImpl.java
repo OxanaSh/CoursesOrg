@@ -10,34 +10,33 @@ import java.util.List;
 
 @Service
 public class StudentGroupServiceImpl implements IStudentGroupService {
-
-
-
     @Autowired
     StudentGroupRepository repository;
 
     @Override
     public List<StudentGroup> getAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public StudentGroup get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public StudentGroup create(StudentGroup studentGroup) {
-        return null;
+        return repository.save(studentGroup);
     }
 
     @Override
     public StudentGroup update(StudentGroup studentGroup) {
-        return null;
+        return repository.save(studentGroup);
     }
 
     @Override
     public StudentGroup delete(String id) {
-        return null;
+        StudentGroup studentGroup = this.get(id);
+        repository.deleteById(id);
+        return studentGroup;
     }
 }

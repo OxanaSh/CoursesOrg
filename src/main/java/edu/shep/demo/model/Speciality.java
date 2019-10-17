@@ -13,15 +13,17 @@ public class Speciality {
     private int code;
     private String name;
     private List<Subject> subjects;
+    private Department department;
 
 
     public Speciality() {
     }
 
-    public Speciality(int code, String name, List<Subject> subjects) {
+    public Speciality(int code, String name, List<Subject> subjects, Department department) {
         this.code = code;
         this.name = name;
         this.subjects = subjects;
+        this.department = department;
     }
 
     public List<Subject> getSubjects() {
@@ -57,6 +59,15 @@ public class Speciality {
     }
 
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+
     @Override
     public String toString() {
         return "Speciality{" +
@@ -64,6 +75,7 @@ public class Speciality {
                 ", code=" + code +
                 ", name='" + name + '\'' +
                 ", subjects=" + subjects +
+                ", department=" + department +
                 '}';
     }
 
@@ -75,11 +87,12 @@ public class Speciality {
         return code == that.code &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(subjects, that.subjects);
+                Objects.equals(subjects, that.subjects) &&
+                Objects.equals(department, that.department);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, code, name, subjects);
+        return Objects.hash(id, code, name, subjects, department);
     }
 }
