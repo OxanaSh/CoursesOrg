@@ -32,6 +32,7 @@ public class PersonServiceImpl implements IPersonService {
     void init(){
         repository.deleteAll();
         repository.saveAll(persons);
+        System.out.println("postconstruct started");
     }
 
 

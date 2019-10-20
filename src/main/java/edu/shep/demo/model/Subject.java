@@ -16,7 +16,7 @@ public class Subject {
     }
 
 
-    public Subject(String name, double hours, Speciality speciality) {
+    public Subject(String name, double hours) {
         this.name = name;
         this.hours = hours;
     }

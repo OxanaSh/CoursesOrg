@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository  extends MongoRepository<Student, String> {
-    List<Student> getAllByGroup_IdOrderByPersonAsc();
+    //List<Student> getAllByGroup_IdOrderByPersonAsc();
 }

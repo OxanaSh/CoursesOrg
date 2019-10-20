@@ -29,7 +29,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     //check
-    public List<Student> getAllByGroupId(){return repository.getAllByGroup_IdOrderByPersonAsc();}
+   // public List<Student> getAllByGroupId(){return repository.getAllByGroup_IdOrderByPersonAsc();}
 
 
     @Override
