@@ -13,14 +13,34 @@ public class StudentGroup {
     private String groupNumber;
     private LessonForm formOfStudying;
     private Speciality speciality;
+    private List <Student> students;
+    private Schedule schedule;
 
     public StudentGroup() {
     }
 
-    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality) {
+    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule) {
         this.groupNumber = groupNumber;
         this.formOfStudying = formOfStudying;
         this.speciality = speciality;
+        this.students = students;
+        this.schedule = schedule;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public String getId() {
@@ -63,22 +83,8 @@ public class StudentGroup {
                 ", groupNumber='" + groupNumber + '\'' +
                 ", formOfStudying=" + formOfStudying +
                 ", speciality=" + speciality +
+                ", students=" + students +
+                ", schedule=" + schedule +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StudentGroup that = (StudentGroup) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(groupNumber, that.groupNumber) &&
-                formOfStudying == that.formOfStudying &&
-                Objects.equals(speciality, that.speciality);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, groupNumber, formOfStudying, speciality);
     }
 }

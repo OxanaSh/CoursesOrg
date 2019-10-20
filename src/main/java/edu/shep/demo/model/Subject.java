@@ -10,26 +10,15 @@ public class Subject {
     @Id
     private String id;
     private String name;
-    private Teacher teacher;
     private double hours;
-
 
     public Subject() {
     }
 
 
-    public Subject(String name, Teacher teacher, double hours) {
+    public Subject(String name, double hours, Speciality speciality) {
         this.name = name;
-        this.teacher = teacher;
         this.hours = hours;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
     }
 
     public String getId() {
@@ -62,7 +51,6 @@ public class Subject {
         return "Subject{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", teacher=" + teacher +'\''+
                 ", hours=" + hours +
                 '}';
     }

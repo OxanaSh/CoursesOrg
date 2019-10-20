@@ -11,13 +11,25 @@ public class Department {
     private String id;
     private int code;
     private String name;
+    private Speciality speciality;
+
+
 
     public Department() {
     }
 
-    public Department(int code, String name) {
+    public Department(int code, String name, Speciality speciality) {
         this.code = code;
         this.name = name;
+        this.speciality = speciality;
+    }
+
+    public Speciality getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
     }
 
     public String getId() {
@@ -45,26 +57,12 @@ public class Department {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Department that = (Department) o;
-        return code == that.code &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, code, name);
-    }
-
-    @Override
     public String toString() {
         return "Department{" +
                 "id='" + id + '\'' +
                 ", code=" + code +
                 ", name='" + name + '\'' +
+                ", speciality=" + speciality +
                 '}';
     }
 }

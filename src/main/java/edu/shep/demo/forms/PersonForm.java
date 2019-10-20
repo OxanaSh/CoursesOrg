@@ -1,25 +1,18 @@
-package edu.shep.demo.model;
+package edu.shep.demo.forms;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDate;
-import java.util.Objects;
-
-@Document
-public class Person {
-   @Id
+public class PersonForm {
     private String id;
     private String name;
     private String surname;
     private String patronymic;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     private String phoneNumber;
 
-    public Person() {
+
+    public PersonForm() {
     }
 
-    public Person(String name, String surname, String patronymic, LocalDate dateOfBirth, String phoneNumber) {
+    public PersonForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -60,11 +53,11 @@ public class Person {
         this.patronymic = patronymic;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -78,33 +71,14 @@ public class Person {
 
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) &&
-                Objects.equals(name, person.name) &&
-                Objects.equals(surname, person.surname) &&
-                Objects.equals(patronymic, person.patronymic) &&
-                Objects.equals(dateOfBirth, person.dateOfBirth) &&
-                Objects.equals(phoneNumber, person.phoneNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, surname, patronymic, dateOfBirth, phoneNumber);
-    }
-
-    @Override
     public String toString() {
-        return "Person{" +
+        return "PersonForm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", patronymic='" + patronymic + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
-
 }

@@ -12,18 +12,18 @@ public class Speciality {
     private String id;
     private int code;
     private String name;
-    private List<Subject> subjects;
-    private Department department;
-
+    private int payment;
+    private List <Subject> subjects;
 
     public Speciality() {
     }
 
-    public Speciality(int code, String name, List<Subject> subjects, Department department) {
+
+    public Speciality(int code, String name, int payment, List<Subject> subjects) {
         this.code = code;
         this.name = name;
+        this.payment = payment;
         this.subjects = subjects;
-        this.department = department;
     }
 
     public List<Subject> getSubjects() {
@@ -33,6 +33,15 @@ public class Speciality {
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
     }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
+    }
+
 
     public String getId() {
         return id;
@@ -58,41 +67,14 @@ public class Speciality {
         this.name = name;
     }
 
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-
     @Override
     public String toString() {
         return "Speciality{" +
                 "id='" + id + '\'' +
                 ", code=" + code +
                 ", name='" + name + '\'' +
+                ", payment=" + payment +
                 ", subjects=" + subjects +
-                ", department=" + department +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Speciality that = (Speciality) o;
-        return code == that.code &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(subjects, that.subjects) &&
-                Objects.equals(department, that.department);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, code, name, subjects, department);
     }
 }

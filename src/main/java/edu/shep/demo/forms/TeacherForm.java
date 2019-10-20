@@ -1,44 +1,28 @@
-package edu.shep.demo.model;
+package edu.shep.demo.forms;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import edu.shep.demo.model.Degree;
+import edu.shep.demo.model.Person;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-
-@Document
-public class Teacher {
-    @Id
+public class TeacherForm {
     private String id;
     private Person person;
     private Degree degree;
-    private LocalDate experience;
+    private String experience;
     private String password;
     private String email;
-    private List <Subject> subject;
 
 
-
-    public Teacher() {
+    public TeacherForm() {
     }
 
-    public Teacher(Person person, Degree degree, LocalDate experience, String password, String email, List<Subject> subject) {
+    public TeacherForm(Person person, Degree degree, String experience, String password, String email) {
         this.person = person;
         this.degree = degree;
         this.experience = experience;
         this.password = password;
         this.email = email;
-        this.subject = subject;
     }
 
-    public List<Subject> getSubject() {
-        return subject;
-    }
-
-    public void setSubject(List<Subject> subject) {
-        this.subject = subject;
-    }
 
     public String getId() {
         return id;
@@ -64,11 +48,11 @@ public class Teacher {
         this.degree = degree;
     }
 
-    public LocalDate getExperience() {
+    public String getExperience() {
         return experience;
     }
 
-    public void setExperience(LocalDate experience) {
+    public void setExperience(String experience) {
         this.experience = experience;
     }
 
@@ -80,7 +64,6 @@ public class Teacher {
         this.password = password;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -91,14 +74,13 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "TeacherForm{" +
                 "id='" + id + '\'' +
                 ", person=" + person +
                 ", degree=" + degree +
-                ", experience=" + experience +
+                ", experience='" + experience + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", subject=" + subject +
                 '}';
     }
 }
