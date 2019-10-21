@@ -30,6 +30,7 @@
             <@spring.formCheckboxes "specialityForm.subjects", mavs "<br>"/>
 
 
+
             <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>
         </form>
     </fieldset>

@@ -20,14 +20,19 @@
 <div class="container">
     <fieldset>
         <legend>Add speciality</legend>
-        <form name="speciality" action="" method="POST">
-            <br>Name:<@spring.formInput "specialityForm.name" "class='form-control'" "text"/>
-            <br>Code:<@spring.formInput "specialityForm.code" "class='form-control'" "text"/>
-            <br>Payment:<@spring.formInput "specialityForm.payment" "class='form-control'" "text"/>
-
-            <br>
-
-            <@spring.formCheckboxes "specialityForm.subjects", mavs "<br>"/>
+        <form name="student" action="" method="POST">
+            <br>Name:<@spring.formInput "personForm.name" "class='form-control'" "text"/>
+            <br>Surname:<@spring.formInput "personForm.surname" "class='form-control'" "text"/>
+            <br>Patronymic:<@spring.formInput "personForm.patronymic" "class='form-control'" "text"/>
+             <br>Date:<@spring.formInput "personForm.dateOfBirth", "class='from-control' readonly"/>
+            <script>
+                $('#dateOfBirth').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+            <br>phone number:<@spring.formInput "personForm.phoneNumber" "class='form-control'" "text"/>
+            <br>password:<@spring.formInput "studentForm.email" "class='form-control'" "text"/>
+            <br>email:<@spring.formInput "studentForm.password" "class='form-control'" "text"/>
 
 
             <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>

@@ -18,6 +18,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Surname</th>
+            <th>Patronymic</th>
             <th>Date of birth</th>
             <th>phoneNumber</th>
             <th>Email</th>
@@ -46,7 +47,7 @@
             </tr>
         </#list>
     </table>
-    <a href="/speciality/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student</a>
+    <a href="/student/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student</a>
 
 </div>
 </body>

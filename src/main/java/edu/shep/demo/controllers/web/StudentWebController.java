@@ -3,6 +3,7 @@ package edu.shep.demo.controllers.web;
 
 import edu.shep.demo.forms.PersonForm;
 import edu.shep.demo.forms.StudentForm;
+import edu.shep.demo.model.Person;
 import edu.shep.demo.model.Student;
 import edu.shep.demo.repository.StudentRepository;
 import edu.shep.demo.services.person.impls.PersonServiceImpl;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -48,24 +51,20 @@ public class StudentWebController {
 
         model.addAttribute("studentForm", studentForm);
         model.addAttribute("personForm", personForm);
-        return  "studentAdd";
+        return  "student/studentAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(@ModelAttribute("studentForm") StudentForm studentForm, @ModelAttribute("personForm") PersonForm personForm){
 
-    /*    Worker newWorker=new Worker(workerForm.getName(), workerForm.getOccupation(),
-                                    workerForm.getSalary(),
-                specialityService.get(workerForm.getSpeciality()),
-                LocalDate.parse(workerForm.getDayOfEmployment(), DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+       Person newPerson = new Person(personForm.getName(), personForm.getSurname(), personForm.getPatronymic(),
+                LocalDate.parse(personForm.getDateOfBirth(), DateTimeFormatter.ofPattern("MM/dd/yyyy")), personForm.getPhoneNumber());
 
-        //String dateFromForm = workerForm.getDayOfEmployment();
-       // newWorker.setDateOfEmployment();
+       Student newStudent = new Student(newPerson, studentForm.getEmail(), studentForm.getPassword());
 
-
-
-       service.create(newWorker);
-  */      return "redirect:/worker/list";
+       personService.create(newPerson);
+       service.create(newStudent);
+       return "redirect:/student/list";
     }
 
 }
