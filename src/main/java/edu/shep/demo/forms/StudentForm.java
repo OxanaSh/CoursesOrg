@@ -2,22 +2,19 @@ package edu.shep.demo.forms;
 
 import edu.shep.demo.model.Person;
 
-public class StudentFrom {
+public class StudentForm {
     private String id;
-    //????
-    private Person person;
+    private String person;
     private String password;
     private String email;
-    private String group;
 
-    public StudentFrom() {
+    public StudentForm() {
     }
 
-    public StudentFrom(Person person, String password, String email, String group) {
+    public StudentForm(String person, String password, String email) {
         this.person = person;
         this.password = password;
         this.email = email;
-        this.group = group;
     }
 
     public String getId() {
@@ -28,11 +25,11 @@ public class StudentFrom {
         this.id = id;
     }
 
-    public Person getPerson() {
+    public String getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(String person) {
         this.person = person;
     }
 
@@ -52,11 +49,13 @@ public class StudentFrom {
         this.email = email;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
+    @Override
+    public String toString() {
+        return "StudentFrom{" +
+                "id='" + id + '\'' +
+                ", person='" + person + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

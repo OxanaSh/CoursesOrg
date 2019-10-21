@@ -2,6 +2,7 @@ package edu.shep.demo.services.student.impls;
 
 import edu.shep.demo.model.Person;
 import edu.shep.demo.model.Student;
+import edu.shep.demo.repository.PersonRepository;
 import edu.shep.demo.repository.StudentRepository;
 import edu.shep.demo.services.student.interfaces.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,35 @@ import java.util.List;
 public class StudentServiceImpl implements IStudentService {
     @Autowired
     StudentRepository repository;
+    @Autowired
+    PersonRepository personRepository;
 
 
+    List<Person> persons = new ArrayList<>(
+            Arrays.asList(
+                   new Person("Stephan", "Ivanov", "Ivanov", LocalDate.of(2000, 11, 22), "07522334"),
+                   new Person("Mark", "Ivanov", "Ivanov", LocalDate.of(1995, 7, 14), "08525934"),
+                   new Person("Anastasia", "Ivanova", "Ivanovna", LocalDate.of(1998, 4, 30), "09423357")
+
+            )
+    );
+
+
+    List <Student> students = new ArrayList<>(
+            Arrays.asList(
+                    new Student(persons.get(0), "passs", "Stephan@gamil.com"),
+                    new Student(persons.get(1), "password", "Mark@gamil.com"),
+                    new Student(persons.get(2), "word", "Anastasia@gmail.com")
+            )
+    );
 
 
 
     @PostConstruct
     void init(){
-       //repository.deleteAll();
-       //repository.saveAll();
+       repository.deleteAll();
+       personRepository.saveAll(persons);
+       repository.saveAll(students);
     }
 
     //check

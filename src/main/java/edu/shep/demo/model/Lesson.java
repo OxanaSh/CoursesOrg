@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Document
@@ -13,17 +14,16 @@ public class Lesson {
     private String id;
     private boolean wasHeld;
     private LocalDate date;
-    private List<Student> presentStudents;
+    private Map<Student, Integer> students;
     private Subject subject;
 
     public Lesson() {
     }
 
-
-    public Lesson(boolean wasHeld, LocalDate date,  List<Student> presentStudents, Subject subject) {
+    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Integer> students, Subject subject) {
         this.wasHeld = wasHeld;
         this.date = date;
-        this.presentStudents = presentStudents;
+        this.students = students;
         this.subject = subject;
     }
 
@@ -59,14 +59,13 @@ public class Lesson {
         this.date = date;
     }
 
-    public List<Student> getPresentStudents() {
-        return presentStudents;
+    public Map<Student, Integer> getStudents() {
+        return students;
     }
 
-    public void setPresentStudents(List<Student> presentStudents) {
-        this.presentStudents = presentStudents;
+    public void setStudents(Map<Student, Integer> students) {
+        this.students = students;
     }
-
 
     @Override
     public String toString() {
@@ -74,7 +73,6 @@ public class Lesson {
                 "id='" + id + '\'' +
                 ", wasHeld=" + wasHeld +
                 ", date=" + date +
-                ", presentStudents=" + presentStudents +
                 '}';
     }
 
@@ -85,12 +83,11 @@ public class Lesson {
         Lesson lesson = (Lesson) o;
         return wasHeld == lesson.wasHeld &&
                 Objects.equals(id, lesson.id) &&
-                Objects.equals(date, lesson.date) &&
-                Objects.equals(presentStudents, lesson.presentStudents);
+                Objects.equals(date, lesson.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, wasHeld, date, presentStudents);
+        return Objects.hash(id, wasHeld, date);
     }
 }
