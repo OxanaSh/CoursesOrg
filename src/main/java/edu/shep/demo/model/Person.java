@@ -15,6 +15,8 @@ public class Person {
     private String patronymic;
     private LocalDate dateOfBirth;
     private String phoneNumber;
+    private boolean enabled;
+
 
     public Person() {
     }
@@ -25,8 +27,25 @@ public class Person {
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
+        this.enabled = true;
     }
 
+    public Person(String name, String surname, String patronymic, LocalDate dateOfBirth, String phoneNumber, boolean enabled) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public String getId() {
         return id;

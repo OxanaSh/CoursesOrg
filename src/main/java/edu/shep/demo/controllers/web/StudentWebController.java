@@ -67,4 +67,8 @@ public class StudentWebController {
        return "redirect:/student/list";
     }
 
+
+   // @RequestMapping(value = )
+  //  String updateWorker
+
 }

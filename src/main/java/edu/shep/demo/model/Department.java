@@ -12,7 +12,7 @@ public class Department {
     private int code;
     private String name;
     private Speciality speciality;
-
+    private boolean enabled;
 
 
     public Department() {
@@ -22,6 +22,22 @@ public class Department {
         this.code = code;
         this.name = name;
         this.speciality = speciality;
+        this.enabled = true;
+    }
+
+    public Department(int code, String name, Speciality speciality, boolean enabled) {
+        this.code = code;
+        this.name = name;
+        this.speciality = speciality;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Speciality getSpeciality() {

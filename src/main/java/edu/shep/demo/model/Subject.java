@@ -11,6 +11,8 @@ public class Subject {
     private String id;
     private String name;
     private double hours;
+    private boolean enabled;
+
 
     public Subject() {
     }
@@ -19,6 +21,22 @@ public class Subject {
     public Subject(String name, double hours) {
         this.name = name;
         this.hours = hours;
+        this.enabled = true;
+    }
+
+    public Subject(String name, double hours, boolean enabled) {
+        this.name = name;
+        this.hours = hours;
+        this.enabled = enabled;
+    }
+
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getId() {

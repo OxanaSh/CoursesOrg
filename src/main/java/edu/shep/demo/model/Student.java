@@ -12,6 +12,8 @@ public class Student {
     private Person person;
     private String password;
     private String email;
+    private boolean enabled;
+
 
     public Student() {
     }
@@ -20,6 +22,22 @@ public class Student {
         this.person = person;
         this.password = password;
         this.email = email;
+        this.enabled = true;
+    }
+
+    public Student(Person person, String password, String email, boolean enabled) {
+        this.person = person;
+        this.password = password;
+        this.email = email;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getId() {

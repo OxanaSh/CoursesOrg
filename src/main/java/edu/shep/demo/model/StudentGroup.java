@@ -15,6 +15,8 @@ public class StudentGroup {
     private Speciality speciality;
     private List <Student> students;
     private Schedule schedule;
+    private boolean enabled;
+
 
     public StudentGroup() {
     }
@@ -25,6 +27,24 @@ public class StudentGroup {
         this.speciality = speciality;
         this.students = students;
         this.schedule = schedule;
+        this.enabled = true;
+    }
+
+    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule, boolean enabled) {
+        this.groupNumber = groupNumber;
+        this.formOfStudying = formOfStudying;
+        this.speciality = speciality;
+        this.students = students;
+        this.schedule = schedule;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<Student> getStudents() {

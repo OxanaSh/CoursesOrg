@@ -16,6 +16,8 @@ public class Lesson {
     private LocalDate date;
     private Map<Student, Integer> students;
     private Subject subject;
+    private boolean enabled;
+
 
     public Lesson() {
     }

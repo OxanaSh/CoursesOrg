@@ -14,6 +14,8 @@ public class Speciality {
     private String name;
     private int payment;
     private List <Subject> subjects;
+    private boolean enabled;
+
 
     public Speciality() {
     }
@@ -24,6 +26,15 @@ public class Speciality {
         this.name = name;
         this.payment = payment;
         this.subjects = subjects;
+        this.enabled = true;
+    }
+
+    public Speciality(int code, String name, int payment, List<Subject> subjects, boolean enabled) {
+        this.code = code;
+        this.name = name;
+        this.payment = payment;
+        this.subjects = subjects;
+        this.enabled = enabled;
     }
 
     public List<Subject> getSubjects() {

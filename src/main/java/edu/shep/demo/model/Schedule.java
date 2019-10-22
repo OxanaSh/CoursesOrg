@@ -11,8 +11,8 @@ public class Schedule {
     @Id
     private String id;
     private StudentGroup group;
-    List<Lesson> lessons;
-
+    private List<Lesson> lessons;
+    private boolean enabled;
 
     public Schedule() {
     }
@@ -20,8 +20,23 @@ public class Schedule {
     public Schedule(StudentGroup group, List<Lesson> lessons) {
         this.group = group;
         this.lessons = lessons;
+        this.enabled = false;
     }
 
+    public Schedule(StudentGroup group, List<Lesson> lessons, boolean enabled) {
+        this.group = group;
+        this.lessons = lessons;
+        this.enabled = enabled;
+    }
+
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @Override
     public boolean equals(Object o) {

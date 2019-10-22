@@ -15,6 +15,8 @@ public class Application {
     private LessonForm formOfStudying;
     private boolean approval;
     private LocalDate dateOfFilling;
+    private boolean enabled;
+
 
     public Application() {
     }
@@ -25,6 +27,24 @@ public class Application {
         this.formOfStudying = formOfStudying;
         this.approval = approval;
         this.dateOfFilling = dateOfFilling;
+        this.enabled = true;
+    }
+
+    public Application(Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, boolean enabled) {
+        this.person = person;
+        this.speciality = speciality;
+        this.formOfStudying = formOfStudying;
+        this.approval = approval;
+        this.dateOfFilling = dateOfFilling;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getId() {

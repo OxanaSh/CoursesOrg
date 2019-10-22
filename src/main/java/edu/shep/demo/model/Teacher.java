@@ -17,7 +17,7 @@ public class Teacher {
     private String password;
     private String email;
     private List <Subject> subject;
-
+    private boolean enabled;
 
 
     public Teacher() {
@@ -30,6 +30,26 @@ public class Teacher {
         this.password = password;
         this.email = email;
         this.subject = subject;
+        this.enabled = true;
+    }
+
+
+    public Teacher(Person person, Degree degree, LocalDate experience, String password, String email, List<Subject> subject, boolean enabled) {
+        this.person = person;
+        this.degree = degree;
+        this.experience = experience;
+        this.password = password;
+        this.email = email;
+        this.subject = subject;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<Subject> getSubject() {
