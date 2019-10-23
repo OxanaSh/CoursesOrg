@@ -19,12 +19,12 @@
                 <td>${subject.id}</td>
                 <td>${subject.getName()}</td>
                 <td>${subject.getHours()}</td>
-                <td><a href="/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
-                <td><a href="/subject/update/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+                <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+                <td><a href="/admin/subject/update/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>
         </#list>
     </table>
-    <a href="/subject/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new subject</a>
+    <a href="/admin/subject/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new subject</a>
 
 </@c.page>

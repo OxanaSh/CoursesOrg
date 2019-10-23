@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-@RequestMapping("/person")
+@RequestMapping("/admin/person")
 @CrossOrigin("*")
 @Controller
 public class PersonWebController {

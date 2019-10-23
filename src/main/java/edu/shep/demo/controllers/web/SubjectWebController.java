@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-@RequestMapping("/subject")
+@RequestMapping("/admin/subject")
 @CrossOrigin("*")
 @Controller
 public class SubjectWebController {
@@ -28,7 +28,7 @@ public class SubjectWebController {
     @RequestMapping("/delete/{id}")
     RedirectView delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/subject/list");
+        return  new RedirectView("/admin/subject/list");
     }
 
 
@@ -45,7 +45,7 @@ public class SubjectWebController {
     public String create(Model model, @ModelAttribute("subjectForm") SubjectForm subjectForm){
         Subject newSubject = new Subject(subjectForm.getName(), Double.parseDouble(subjectForm.getHours()));
         service.create(newSubject);
-        return "redirect:/subject/list";
+        return "redirect:/admin/subject/list";
     }
 
 
@@ -69,7 +69,7 @@ public class SubjectWebController {
         Subject newSubject = new Subject(subjectForm.getName(), Double.parseDouble(subjectForm.getHours()));
         newSubject.setId(id);
         service.update(newSubject);
-        return "redirect:/subject/list";
+        return "redirect:/admin/subject/list";
     }
 
 

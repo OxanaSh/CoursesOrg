@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-@RequestMapping("/speciality")
+@RequestMapping("/admin/speciality")
 @CrossOrigin("*")
 @Controller
 public class SpecialityWebController {
