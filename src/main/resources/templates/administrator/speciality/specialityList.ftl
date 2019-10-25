@@ -27,11 +27,11 @@
                 <#else >
                     <td>object does not exist</td>
                 </#if>
-                <td><a href="/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
-                <td><a href="/speciality/update/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+                <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+                <td><a href="/admin/speciality/update/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>
         </#list>
     </table>
-    <a href="/speciality/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new speciality</a>
+    <a href="/admin/speciality/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new speciality</a>
 </@c.page>

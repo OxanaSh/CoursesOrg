@@ -34,13 +34,13 @@ public class StudentWebController {
     String showAll(Model model){
         List<Student> list = service.getAll();
         model.addAttribute("students", list);
-        return "student/studentList";
+        return "administrator/student/studentList";
     }
 
     @RequestMapping("/delete/{id}")
     RedirectView delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/student/list");
+        return  new RedirectView("/admin/student/list");
     }
 
     @RequestMapping(value="/create", method = RequestMethod.GET)
@@ -51,7 +51,7 @@ public class StudentWebController {
 
         model.addAttribute("studentForm", studentForm);
         model.addAttribute("personForm", personForm);
-        return  "student/studentAdd";
+        return  "administrator/student/studentAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -64,7 +64,7 @@ public class StudentWebController {
 
        personService.create(newPerson);
        service.create(newStudent);
-       return "redirect:/student/list";
+       return "redirect:/admin/student/list";
     }
 
 

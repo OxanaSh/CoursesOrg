@@ -31,12 +31,12 @@
                 </#if>
                 <td>${student.getEmail()}</td>
                 <td>${student.getPassword()}</td>
-                <td><a href="/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
-                <td><a href="/student/update/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+                <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+                <td><a href="/admin/student/update/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>
         </#list>
     </table>
-    <a href="/student/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student</a>
+    <a href="/admin/student/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student</a>
 
 </@c.page>

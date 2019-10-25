@@ -64,8 +64,9 @@
           </span>
      </a>
 
-    <form action="/logout" method="post">
-        <input type="submit" value="Sign out">
+    <form action="/logout" method="POST">
+        <input type="submit" class="btn btn-dark" value="Sign out">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 
     <!--
@@ -79,10 +80,10 @@
 
 <div class="sidenav">
     <a href="#">Groups</a>
-    <a href="/subject/list">Subjects</a>
-    <a href="/speciality/list">Specialities</a>
-    <a href="/person/list">Person</a>
-    <a href="/student/list">Student</a>
+    <a href="/admin/subject/list">Subjects</a>
+    <a href="/admin/speciality/list">Specialities</a>
+    <a href="/admin/person/list">Person</a>
+    <a href="/admin/student/list">Student</a>
 </div>
 
 <div class="main">

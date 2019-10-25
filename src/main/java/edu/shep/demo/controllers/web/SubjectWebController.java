@@ -22,7 +22,7 @@ public class SubjectWebController {
     String showAll(Model model){
         List<Subject> list = service.getAll();
         model.addAttribute("subjects", list);
-        return "subject/subjectsList";
+        return "administrator/subject/subjectsList";
     }
 
     @RequestMapping("/delete/{id}")
@@ -38,7 +38,7 @@ public class SubjectWebController {
     public String addSubject(Model model){
         SubjectForm subjectForm = new SubjectForm();
         model.addAttribute("subjectForm", subjectForm);
-        return "subject/subjectAdd";
+        return "administrator/subject/subjectAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -57,7 +57,7 @@ public class SubjectWebController {
         SubjectForm subjectForm = new SubjectForm(subjectToUpdate.getName(), Double.toString(subjectToUpdate.getHours()));
         subjectForm.setId(subjectToUpdate.getId());
         model.addAttribute("subjectForm", subjectForm);
-        return "subject/subjectUpdate";
+        return "administrator/subject/subjectUpdate";
     }
 
 

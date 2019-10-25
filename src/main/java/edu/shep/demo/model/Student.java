@@ -5,15 +5,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
+//@Entity
 @Document
 public class Student {
     @Id
     private String id;
     private Person person;
-    private String password;
     private String email;
-    private boolean enabled;
-
+    private String password;
+    private boolean active;
+    //private String roles;
 
     public Student() {
     }
@@ -22,22 +23,22 @@ public class Student {
         this.person = person;
         this.password = password;
         this.email = email;
-        this.enabled = true;
+        this.active = true;
     }
 
     public Student(Person person, String password, String email, boolean enabled) {
         this.person = person;
         this.password = password;
         this.email = email;
-        this.enabled = enabled;
+        this.active = enabled;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String getId() {

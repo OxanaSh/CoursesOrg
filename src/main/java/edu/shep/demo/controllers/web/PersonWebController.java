@@ -26,13 +26,13 @@ public class PersonWebController {
     String showAll(Model model){
         List<Person> list = service.getAll();
         model.addAttribute("persons", list);
-        return "person/personsList";
+        return "administrator/person/personsList";
     }
 
     @RequestMapping("/delete/{id}")
     RedirectView delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/person/list");
+        return  new RedirectView("/admin/person/list");
     }
 
 
@@ -42,14 +42,14 @@ public class PersonWebController {
     public String addPerson(Model model){
         PersonForm personForm = new PersonForm();
         model.addAttribute("personForm", personForm);
-        return "person/personAdd";
+        return "administrator/person/personAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model, @ModelAttribute("personForm") PersonForm personForm){
         Person newPerson = new Person(personForm.getName(), personForm.getSurname(), personForm.getPatronymic(), LocalDate.parse(personForm.getDateOfBirth(), DateTimeFormatter.ofPattern("MM/dd/yyyy")), personForm.getPhoneNumber());
         service.create(newPerson);
-        return "redirect:/person/list";
+        return "redirect:/admin/person/list";
     }
 
 
@@ -62,7 +62,7 @@ public class PersonWebController {
                 personToUpdate.getDateOfBirth().toString(), personToUpdate.getPhoneNumber());
         personForm.setId(personToUpdate.getId());
         model.addAttribute("personForm", personForm);
-        return "person/personUpdate";
+        return "administrator/person/personUpdate";
     }
 
 
@@ -81,7 +81,7 @@ public class PersonWebController {
                 newDate, personForm.getPhoneNumber());
         newPerson.setId(id);
         service.update(newPerson);
-        return "redirect:/person/list";
+        return "redirect:/admin/person/list";
     }
 
 

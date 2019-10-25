@@ -31,13 +31,13 @@ public class SpecialityWebController {
     String showAll(Model model){
         List<Speciality> list = service.getAll();
         model.addAttribute("specialities", list);
-        return "speciality/specialityList";
+        return "administrator/speciality/specialityList";
     }
 
     @RequestMapping("/delete/{id}")
     RedirectView delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/speciality/list");
+        return  new RedirectView("/admin/speciality/list");
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class SpecialityWebController {
 
         model.addAttribute("mavs", mavs);
         model.addAttribute("specialityForm", specialityForm);
-        return  "speciality/specialityAdd";
+        return  "administrator/speciality/specialityAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -63,7 +63,7 @@ public class SpecialityWebController {
         Speciality newSpeciality= new Speciality(Integer.parseInt(specialityForm.getCode()), specialityForm.getName(),
                 Integer.parseInt(specialityForm.getPayment()), newSubjects);
     service.create(newSpeciality);
-        return "redirect:/speciality/list";
+        return "redirect:/admin/speciality/list";
     }
 
 
@@ -75,13 +75,13 @@ public class SpecialityWebController {
                Integer.toString(specialityToUpdate.getPayment()), null);
         specialityForm.setId(specialityToUpdate.getId());
 
-        Map<String, String> mavs = (Map<String, String>) subjectService.getAll().stream()
+        Map<String, String> mavs = subjectService.getAll().stream()
                 .collect(Collectors.toMap(Subject::getId, Subject::getName));
 
 
         model.addAttribute("specialityForm", specialityForm);
         model.addAttribute("mavs", mavs);
-        return "speciality/specialityUpdate";
+        return "administrator/speciality/specialityUpdate";
     }
 
 
@@ -99,7 +99,7 @@ public class SpecialityWebController {
         newSpeciality.setId(id);
 
         service.update(newSpeciality);
-        return "redirect:/speciality/list";
+        return "redirect:/admin/speciality/list";
     }
 
 
