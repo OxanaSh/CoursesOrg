@@ -20,9 +20,18 @@
             Welcome to our community!
           </span>
     </a>
+
+
+        <form action="/logout" method="POST">
+            <input type="submit" class="btn btn-dark" value="Sign out">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+
+   <!--
     <a class="navbar-brand" href="/login" >
         <img src="https://image.flaticon.com/icons/svg/149/149951.svg" height="45" width="45" class="d-inline-block align-top" alt="">
     </a>
+   -->
 
 </nav>
 

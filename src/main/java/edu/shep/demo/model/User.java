@@ -15,9 +15,8 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     private String id;
-    @Indexed(unique=true)
+   // @Indexed(unique=true)
     private String username;
-
     private List <Role> authorities;
     private String password;
     private boolean accountNonExpired;
@@ -30,8 +29,7 @@ public class User implements UserDetails {
     }
 
 
-    public User(String id, String username, List<Role> authorities, String password, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean enabled) {
-        this.id = id;
+    public User(String username, String password, List<Role> authorities, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean enabled) {
         this.username = username;
         this.authorities = authorities;
         this.password = password;
@@ -40,6 +38,8 @@ public class User implements UserDetails {
         this.credentialsNonExpired = isCredentialsNonExpired;
         this.enabled = enabled;
     }
+
+
 
     public String getId() {
         return id;
