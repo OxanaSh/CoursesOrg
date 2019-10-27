@@ -5,6 +5,7 @@ import edu.shep.demo.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,13 +22,27 @@ public class MainWebController {
 
     @RequestMapping ("/")
     String mainPage(Model model){
+        boolean isAuthenticated;
+        // checking if someone is logged in
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+
+       if(isAuthenticated){
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
 
         model.addAttribute("username", user.getUsername());
-        model.addAttribute("roles", user.getAuthorities().stream().map(Role::getAuthority).collect(joining(",")));
-        return "index";
+        model.addAttribute("roles", user.getAuthorities());//user.getAuthorities().stream().map(Role::getAuthority).collect(joining(","))
+        }
+
+
+
+    model.addAttribute("isAuthenticated", isAuthenticated);
+
+           return "index";
     }
+
 
     @RequestMapping (value = "/login", method = RequestMethod.GET)
     String login(Model model,
@@ -44,6 +59,9 @@ public class MainWebController {
     String mainAdmin(){
         return "administrator/mainAdmin";
     }
+
+
+
 
 
 }

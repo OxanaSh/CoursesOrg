@@ -9,6 +9,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
    </head>
 <style>
     body {
@@ -79,11 +80,11 @@
 </body>
 
 <div class="sidenav">
-    <a href="#">Groups</a>
-    <a href="/admin/subject/list">Subjects</a>
-    <a href="/admin/speciality/list">Specialities</a>
-    <a href="/admin/person/list">Person</a>
-    <a href="/admin/student/list">Student</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-white">Groups</a>
+    <a href="/admin/subject/list" class="w3-bar-item w3-button w3-hover-white">Subjects</a>
+    <a href="/admin/speciality/list" class="w3-bar-item w3-button w3-hover-white">Specialities</a>
+    <a href="/admin/person/list" class="w3-bar-item w3-button w3-hover-white">Person</a>
+    <a href="/admin/student/list" class="w3-bar-item w3-button w3-hover-white">Student</a>
 </div>
 
 <div class="main">

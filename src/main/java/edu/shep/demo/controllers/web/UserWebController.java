@@ -5,6 +5,11 @@ import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import edu.shep.demo.services.config.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,6 +69,9 @@ public class UserWebController {
         service.create(newUser);
         return"redirect:/admin/user/list";
     }
+
+
+
 
 
 }
