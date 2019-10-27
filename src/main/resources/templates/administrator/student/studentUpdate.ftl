@@ -1,9 +1,8 @@
-<#import "../addForm.ftl" as c/>
+<#import "../administrationPanel.ftl" as c/>
 <#import "/spring.ftl" as spring/>
-<@c.page title="subject">
-
-    <fieldset>
-        <legend>Update speciality</legend>
+<@c.page title="student">
+    <div class="container" style="border: 2px solid black; padding: 20px 20px">
+<legend>Update student information</legend>
         <form name="speciality" action="" method="POST">
             <br>Code:<@spring.formInput "specialityForm.code" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -18,6 +17,5 @@
 
             <input type="submit" class="btn btn-secondary btn-lg active" value="Update"/>
         </form>
-    </fieldset>
-
+    </div>
 </@c.page>

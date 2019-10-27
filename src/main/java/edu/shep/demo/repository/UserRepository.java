@@ -1,4 +1,4 @@
-package edu.shep.demo.services.config;
+package edu.shep.demo.repository;
 
 import edu.shep.demo.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;

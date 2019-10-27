@@ -1,10 +1,9 @@
-<#import "../addForm.ftl" as c/>
+<#import "../administrationPanel.ftl" as c/>
 <#import "/spring.ftl" as spring/>
-<@c.page title="subject">
+<@c.page title="user">
 
-
-    <fieldset>
-        <legend>Add person</legend>
+    <div class="container" style="border: 2px solid black; padding: 20px 20px">
+        <legend>Update user</legend>
         <form name="subject" action="" method="POST">
 
             <br>Name:<@spring.formInput "subjectForm.name" "class='form-control'" "text"/>
@@ -15,6 +14,6 @@
 
             <input type="submit" class="btn btn-secondary btn-lg active" value="Update"/>
         </form>
-    </fieldset>
 
+</div>
 </@c.page>

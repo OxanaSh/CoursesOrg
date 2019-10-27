@@ -2,6 +2,7 @@ package edu.shep.demo.services.config;
 
 import com.mongodb.lang.NonNull;
 import edu.shep.demo.model.User;
+import edu.shep.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,9 +1,10 @@
-<#import "../addForm.ftl" as c/>
+<#import "../administrationPanel.ftl" as c/>
 <#import "/spring.ftl" as spring/>
-<@c.page title="subject">
+<@c.page title="speciality">
 
-    <fieldset>
-        <legend>Add speciality</legend>
+    <div class="container" style="border: 2px solid black; padding: 20px 20px">
+
+    <legend>Add speciality</legend>
         <form name="speciality" action="" method="POST">
             <br>Name:<@spring.formInput "specialityForm.name" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -20,9 +21,9 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 
-
+            <br/>
             <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>
         </form>
-    </fieldset>
 
+</div>
 </@c.page>

@@ -22,10 +22,7 @@
     </a>
 
 
-        <form action="/logout" method="POST">
-            <input type="submit" class="btn btn-dark" value="Sign out">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
+
 
    <!--
     <a class="navbar-brand" href="/login" >
