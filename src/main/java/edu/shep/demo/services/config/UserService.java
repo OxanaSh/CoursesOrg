@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService, IUserService{
 
     @PostConstruct
     public void init() {
-       User user = new User();
+       /*User user = new User();
        user.setUsername("admin");
        user.setAuthorities(new ArrayList<>(Arrays.asList(Role.values())));
        user.setAccountNonExpired(true);
@@ -39,6 +39,7 @@ public class UserService implements UserDetailsService, IUserService{
         //    userDao.save(user);
        //});
         repository.save(user);
+        */
 
     }
         @Override
