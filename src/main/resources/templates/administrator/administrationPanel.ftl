@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
+  <!--  <link rel="icon" href="/images/icon.png" type="image/png" > -->
    </head>
 <style>
     body {
@@ -64,7 +64,7 @@
 </body>
 <nav class="navbar navbar-light sticky-top" style="background-color: #f2f2f2; border-bottom: 2px solid black;" >
 
-        <a class="navbar-brand" href="/" >
+        <a class="navbar-brand" href="/">
             <img src="https://img.icons8.com/pastel-glyph/64/000000/cat--v3.png" height="45" width="45" class="d-inline-block align-top" alt="">
             <span class="navbar-text">
             Welcome to our community!
@@ -91,7 +91,7 @@
     <a href="/admin/speciality/list" class="w3-bar-item w3-button w3-hover-white">Specialities</a>
     <a href="/admin/person/list" class="w3-bar-item w3-button w3-hover-white">Person</a>
     <a href="/admin/student/list" class="w3-bar-item w3-button w3-hover-white">Student</a>
-    <hr class="my-4">
+    <hr style="color: whitesmoke; size: 1px; width: 90%;"/>
     <a href="/admin/user/list" class="w3-bar-item w3-button w3-hover-white">User</a>
 
 </div>

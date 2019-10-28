@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,9 +83,37 @@ public class StudentWebController {
    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
    public String update(Model model, @PathVariable("id") String id){
         Student studentToUpdate = service.get(id);
-        //StudentForm studentForm = new StudentForm(studentToUpdate.)
-
-       return "/admin/student/studentUpdate";
+        StudentForm studentForm = new StudentForm(studentToUpdate.getPerson().getName(), studentToUpdate.getPerson().getSurname(),
+                studentToUpdate.getPerson().getPatronymic(), studentToUpdate.getPerson().getDateOfBirth().toString(),
+                studentToUpdate.getPerson().getPhoneNumber(), studentToUpdate.getUser().getUsername(), studentToUpdate.getUser().getPassword(), studentToUpdate.isActive());
+        studentForm.setId(id);
+        model.addAttribute("studentForm", studentForm);
+       return "/administrator/student/studentUpdate";
    }
+
+   @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+   public String update(@ModelAttribute("studentForm") StudentForm studentForm, @PathVariable("id") String id){
+       LocalDate newDate;
+       try{
+           newDate = LocalDate.parse(studentForm.getDateOfBirth(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+       }
+       catch(DateTimeParseException e){
+           newDate = LocalDate.parse(studentForm.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+       }
+
+        Person newPerson = new Person(studentForm.getName(), studentForm.getSurname(), studentForm.getPatronymic(),
+                newDate,studentForm.getPhoneNumber());
+
+        User newUser = new User(studentForm.getUsername(), studentForm.getPassword(), new ArrayList<>(Arrays.asList(Role.USER_STUDENT)));
+
+        Student newStudent = new Student(newPerson, newUser, studentForm.isEnabled());
+
+       personService.update(newPerson);
+       userService.update(newUser);
+       service.update(newStudent);
+
+        return "redirect:/admin/student/list";
+   }
+
 
 }

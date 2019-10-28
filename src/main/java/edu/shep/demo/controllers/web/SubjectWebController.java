@@ -64,8 +64,6 @@ public class SubjectWebController {
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(Model model, @ModelAttribute("subjectForm") SubjectForm subjectForm, @PathVariable(value="id") String id){
-
-
         Subject newSubject = new Subject(subjectForm.getName(), Double.parseDouble(subjectForm.getHours()));
         newSubject.setId(id);
         service.update(newSubject);

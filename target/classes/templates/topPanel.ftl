@@ -10,7 +10,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-<body >
+<body>
 
 <nav class="navbar navbar-light sticky-top" style="background-color: #f2f2f2; border-bottom: 2px solid black;" >
 

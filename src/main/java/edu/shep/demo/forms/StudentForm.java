@@ -11,8 +11,20 @@ public class StudentForm {
     private String phoneNumber;
     private String username;
     private String password;
+    private boolean enabled;
 
     public StudentForm() {
+    }
+
+    public StudentForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, boolean enabled) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
     }
 
     public StudentForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password) {
@@ -23,6 +35,15 @@ public class StudentForm {
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
+        this.enabled = true;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getId() {
