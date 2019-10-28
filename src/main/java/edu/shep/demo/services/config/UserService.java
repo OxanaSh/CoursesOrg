@@ -1,16 +1,20 @@
 package edu.shep.demo.services.config;
 
 import com.mongodb.lang.NonNull;
+import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import edu.shep.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,21 +26,20 @@ public class UserService implements UserDetailsService, IUserService{
 
     @PostConstruct
     public void init() {
-       /*User user = new User();
-       user.setUsername("u");
+       User user = new User();
+       user.setUsername("admin");
        user.setAuthorities(new ArrayList<>(Arrays.asList(Role.values())));
        user.setAccountNonExpired(true);
        user.setAccountNonLocked(true);
        user.setCredentialsNonExpired(true);
        user.setEnabled(true);
-       user.setPassword(new BCryptPasswordEncoder().encode("p"));
+       user.setPassword(new BCryptPasswordEncoder().encode("admin"));
          // userDao.findByUsername("user").ifPresent(user -> {
         //  user.setPassword(new BCryptPasswordEncoder().encode("p"));
         //    userDao.save(user);
        //});
-        userDao.save(user);
+        repository.save(user);
 
-        */
     }
         @Override
         public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
