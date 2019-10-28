@@ -19,23 +19,23 @@ public class SubjectWebController {
     SubjectServiceImpl service;
 
     @RequestMapping ("/list")
-    String showAll(Model model){
+    public String list(Model model){
         List<Subject> list = service.getAll();
         model.addAttribute("subjects", list);
         return "administrator/subject/subjectsList";
     }
 
     @RequestMapping("/delete/{id}")
-    RedirectView delete(@PathVariable(value = "id") String id){
+    public String delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/admin/subject/list");
+        return  "redirect:/admin/subject/list";
     }
 
 
 
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String addSubject(Model model){
+    public String create(Model model){
         SubjectForm subjectForm = new SubjectForm();
         model.addAttribute("subjectForm", subjectForm);
         return "administrator/subject/subjectAdd";
@@ -52,7 +52,7 @@ public class SubjectWebController {
 
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String updateSubject(Model model, @PathVariable(value="id") String id){
+    public String update(Model model, @PathVariable(value="id") String id){
         Subject subjectToUpdate = service.get(id);
         SubjectForm subjectForm = new SubjectForm(subjectToUpdate.getName(), Double.toString(subjectToUpdate.getHours()));
         subjectForm.setId(subjectToUpdate.getId());

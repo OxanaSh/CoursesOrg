@@ -4,14 +4,15 @@
 
     <div class="container" style="border: 2px solid black; padding: 20px 20px">
         <legend>Update user</legend>
-        <form name="subject" action="" method="POST">
+        <form name="user" action="" method="POST">
 
-            <br>Name:<@spring.formInput "subjectForm.name" "class='form-control'" "text"/>
+            <br>username:<@spring.formInput "userForm.username" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>Hours:<@spring.formInput "subjectForm.hours" "class='form-control'" "text"/>
+            <@spring.formCheckboxes "userForm.authorities", roles "<br>"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
+            <br/>
             <input type="submit" class="btn btn-secondary btn-lg active" value="Update"/>
         </form>
 

@@ -28,16 +28,16 @@ public class SpecialityWebController {
     SubjectServiceImpl subjectService;
 
     @RequestMapping ("/list")
-    String showAll(Model model){
+    public String list(Model model){
         List<Speciality> list = service.getAll();
         model.addAttribute("specialities", list);
         return "administrator/speciality/specialityList";
     }
 
     @RequestMapping("/delete/{id}")
-    RedirectView delete(@PathVariable(value = "id") String id){
+    public String delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/admin/speciality/list");
+        return  "redirect:/admin/speciality/list";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class SpecialityWebController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createSpeciality (@ModelAttribute("specialityForm") SpecialityForm specialityForm){
+    public String create(@ModelAttribute("specialityForm") SpecialityForm specialityForm){
         List <Subject> newSubjects = new ArrayList<>();
         for(int i=0; i<specialityForm.getSubjects().size(); i++)
         {
@@ -69,7 +69,7 @@ public class SpecialityWebController {
 
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String updateSpeciality(Model model, @PathVariable(value="id") String id){
+    public String update(Model model, @PathVariable(value="id") String id){
         Speciality specialityToUpdate = service.get(id);
         SpecialityForm specialityForm = new SpecialityForm(Integer.toString(specialityToUpdate.getCode()), specialityToUpdate.getName(),
                Integer.toString(specialityToUpdate.getPayment()), null);

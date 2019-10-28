@@ -8,7 +8,6 @@
             <th>Id</th>
             <th>Username</th>
             <th>Authorities</th>
-            <th>Expired</th>
             <th>Enabled</th>
             <th></th>
             <th></th>
@@ -26,18 +25,14 @@
                 <td>does not exist</td>
                 </#if>
 
-                <#if user.isAccountNonExpired()>
-                  <td>no</td>
-                    <#else>
-                        <td>yes</td>
-                </#if>
                 <#if user.isEnabled()>
                     <td>yes</td>
-                    <#else>
+                    <td><a href="/admin/user/delete/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                <#else>
                         <td>no</td>
+                        <td><a href="/admin/user/delete/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
                 </#if>
-                <td><a href="/admin/user/delete/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
-                <td><a href="/admin/user/update/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+                 <td><a href="/admin/user/update/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>
         </#list>

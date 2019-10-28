@@ -31,20 +31,20 @@ public class StudentWebController {
     PersonServiceImpl personService;
 
     @RequestMapping ("/list")
-    String showAll(Model model){
+    public String list(Model model){
         List<Student> list = service.getAll();
         model.addAttribute("students", list);
         return "administrator/student/studentList";
     }
 
     @RequestMapping("/delete/{id}")
-    RedirectView delete(@PathVariable(value = "id") String id){
+    public String delete(@PathVariable(value = "id") String id){
         service.delete(id);
-        return  new RedirectView("/admin/student/list");
+        return  "redirect:/admin/student/list";
     }
 
     @RequestMapping(value="/create", method = RequestMethod.GET)
-    public String addWorker(Model model){
+    public String create(Model model){
 
         StudentForm studentForm = new StudentForm();
         PersonForm personForm = new PersonForm();
@@ -55,7 +55,7 @@ public class StudentWebController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    String create(@ModelAttribute("studentForm") StudentForm studentForm, @ModelAttribute("personForm") PersonForm personForm){
+    public String create(@ModelAttribute("studentForm") StudentForm studentForm, @ModelAttribute("personForm") PersonForm personForm){
 
        Person newPerson = new Person(personForm.getName(), personForm.getSurname(), personForm.getPatronymic(),
                 LocalDate.parse(personForm.getDateOfBirth(), DateTimeFormatter.ofPattern("MM/dd/yyyy")), personForm.getPhoneNumber());

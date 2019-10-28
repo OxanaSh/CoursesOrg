@@ -73,6 +73,7 @@ public class User implements UserDetails {
         this.credentialsNonExpired = credentialsNonExpired;
     }
 
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -112,5 +113,6 @@ public class User implements UserDetails {
         return enabled;
     }
 
+    public List<Role> getAuthoritiesList(){return authorities;}
 
 }

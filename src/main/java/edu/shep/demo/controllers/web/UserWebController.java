@@ -1,15 +1,9 @@
 package edu.shep.demo.controllers.web;
 
-import edu.shep.demo.forms.UserForm;
 import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import edu.shep.demo.services.config.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.StringBufferInputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -35,31 +24,34 @@ public class UserWebController {
     UserService service;
 
     @RequestMapping("/list")
-    String list(Model model){
+    public String list(Model model){
         model.addAttribute("users", service.getAll());
         return "administrator/user/userList";
     }
 
     @RequestMapping("/delete/{id}")
-    String delete(@PathVariable(value="id") String id){
+    public String delete(@PathVariable(value="id") String id){
         User unEnabled = service.get(id);
+       if(unEnabled.isEnabled()){
         unEnabled.setEnabled(false);
+       }
+       else unEnabled.setEnabled(true);
        service.update(unEnabled);
         return "redirect:/admin/user/list";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    String create(Model model){
-        UserForm userForm = new UserForm();
+    public String create(Model model){
+        User userForm = new User();
         Map<String, String> mavs = Arrays.stream(Role.values()).collect(Collectors.toMap(Role::getAuthority, Role::getAuthority));
-        List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
+        //List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
         model.addAttribute("userForm",userForm);
         model.addAttribute("roles", mavs);
         return "administrator/user/userAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    String create(@ModelAttribute("userForm") UserForm userForm){
+    public String create(@ModelAttribute("userForm") User userForm){
         List<Role> newRoles = new ArrayList<>();
         for (Role newRole : userForm.getAuthorities()) {
             newRoles.add(newRole);
@@ -70,6 +62,30 @@ public class UserWebController {
         return"redirect:/admin/user/list";
     }
 
+
+    @RequestMapping(value="/update/{id}", method = RequestMethod.GET)
+    public String update(Model model, @PathVariable(value="id") String id){
+        User userToUpdate = service.get(id);
+
+        Map<String, String> roles = Arrays.stream(Role.values()).collect(Collectors.toMap(Role::getAuthority, Role::getAuthority));
+
+        model.addAttribute("roles", roles);
+        model.addAttribute("userForm",userToUpdate);
+
+        return "administrator/user/userUpdate";
+    }
+
+    @RequestMapping(value="/update/{id}", method = RequestMethod.POST)
+    public String update(Model model, @ModelAttribute("userForm") User userForm, @PathVariable(value="id") String id){
+        List<Role> newRoles = new ArrayList<>();
+        for (Role newRole : userForm.getAuthorities()) {
+            newRoles.add(newRole);
+        }
+
+        User newUser = new User(userForm.getUsername(), userForm.getPassword(), newRoles, userForm.isAccountNonExpired(),userForm.isAccountNonLocked(), userForm.isCredentialsNonExpired(),userForm.isEnabled());
+        service.update(userForm);
+        return "redirect:/admin/user/list";
+    }
 
 
 
