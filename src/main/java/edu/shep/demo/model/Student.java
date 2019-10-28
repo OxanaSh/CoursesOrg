@@ -11,26 +11,25 @@ public class Student {
     @Id
     private String id;
     private Person person;
-    private String email;
-    private String password;
+    private User user;
     private boolean active;
     //private String roles;
 
     public Student() {
     }
 
-    public Student(Person person, String password, String email) {
+    public Student(Person person, User user, boolean active) {
         this.person = person;
-        this.password = password;
-        this.email = email;
-        this.active = true;
+        this.user = user;
+        this.active = active;
     }
 
-    public Student(Person person, String password, String email, boolean enabled) {
-        this.person = person;
-        this.password = password;
-        this.email = email;
-        this.active = enabled;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public boolean isActive() {
@@ -57,46 +56,13 @@ public class Student {
         this.person = person;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
     @Override
     public String toString() {
         return "Student{" +
                 "id='" + id + '\'' +
                 ", person=" + person +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                ", user=" + user +
+                ", active=" + active +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(id, student.id) &&
-                Objects.equals(person, student.person) &&
-                Objects.equals(password, student.password) &&
-                Objects.equals(email, student.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, person, password, email);
     }
 }

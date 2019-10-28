@@ -39,7 +39,15 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-
+    public User(String username, String password, List<Role> authorities) {
+        this.username = username;
+        this.authorities = authorities;
+        this.password = password;
+        this.accountNonExpired = true;
+        this.accountNonLocked = true;
+        this.credentialsNonExpired = true;
+        this.enabled = true;
+    }
 
     public String getId() {
         return id;

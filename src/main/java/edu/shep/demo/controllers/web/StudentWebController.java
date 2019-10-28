@@ -4,11 +4,15 @@ package edu.shep.demo.controllers.web;
 import edu.shep.demo.forms.PersonForm;
 import edu.shep.demo.forms.StudentForm;
 import edu.shep.demo.model.Person;
+import edu.shep.demo.model.Role;
 import edu.shep.demo.model.Student;
+import edu.shep.demo.model.User;
 import edu.shep.demo.repository.StudentRepository;
+import edu.shep.demo.services.config.UserService;
 import edu.shep.demo.services.person.impls.PersonServiceImpl;
 import edu.shep.demo.services.student.impls.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,6 +35,9 @@ public class StudentWebController {
 
     @Autowired
     PersonServiceImpl personService;
+    @Autowired
+    UserService userService;
+
 
     @RequestMapping ("/list")
     public String list(Model model){
@@ -45,30 +54,37 @@ public class StudentWebController {
 
     @RequestMapping(value="/create", method = RequestMethod.GET)
     public String create(Model model){
-
         StudentForm studentForm = new StudentForm();
-        PersonForm personForm = new PersonForm();
-
         model.addAttribute("studentForm", studentForm);
-        model.addAttribute("personForm", personForm);
         return  "administrator/student/studentAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute("studentForm") StudentForm studentForm, @ModelAttribute("personForm") PersonForm personForm){
+    public String create(@ModelAttribute("studentForm") StudentForm studentForm){
 
-       Person newPerson = new Person(personForm.getName(), personForm.getSurname(), personForm.getPatronymic(),
-                LocalDate.parse(personForm.getDateOfBirth(), DateTimeFormatter.ofPattern("MM/dd/yyyy")), personForm.getPhoneNumber());
+       Person newPerson = new Person(studentForm.getName(), studentForm.getSurname(),
+               studentForm.getPatronymic(), LocalDate.parse(studentForm.getDateOfBirth(),
+               DateTimeFormatter.ofPattern("MM/dd/yyyy")), studentForm.getPhoneNumber());
 
-       Student newStudent = new Student(newPerson, studentForm.getEmail(), studentForm.getPassword());
+       User newUser = new User (studentForm.getUsername(),
+               new BCryptPasswordEncoder().encode(studentForm.getPassword()),
+               new ArrayList<>(Arrays.asList(Role.USER_STUDENT)));
+
+       Student newStudent = new Student(newPerson, newUser, true);
 
        personService.create(newPerson);
+       userService.create(newUser);
        service.create(newStudent);
        return "redirect:/admin/student/list";
     }
 
 
-   // @RequestMapping(value = )
-  //  String updateWorker
+   @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+   public String update(Model model, @PathVariable("id") String id){
+        Student studentToUpdate = service.get(id);
+        //StudentForm studentForm = new StudentForm(studentToUpdate.)
+
+       return "/admin/student/studentUpdate";
+   }
 
 }

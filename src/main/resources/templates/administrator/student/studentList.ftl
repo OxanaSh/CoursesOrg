@@ -12,7 +12,6 @@
             <th>Date of birth</th>
             <th>phoneNumber</th>
             <th>Email</th>
-            <th>password</th>
             <th></th>
             <th></th>
         </tr>
@@ -29,8 +28,8 @@
                  <#else >
                     <td>object does not exist</td>
                 </#if>
-                <td>${student.getEmail()}</td>
-                <td>${student.getPassword()}</td>
+                <td>${student.getUser().getUsername()}</td>
+
                 <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
                 <td><a href="/admin/student/update/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 

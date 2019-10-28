@@ -1,11 +1,15 @@
 package edu.shep.demo.services.student.impls;
 
 import edu.shep.demo.model.Person;
+import edu.shep.demo.model.Role;
 import edu.shep.demo.model.Student;
+import edu.shep.demo.model.User;
 import edu.shep.demo.repository.PersonRepository;
 import edu.shep.demo.repository.StudentRepository;
+import edu.shep.demo.repository.UserRepository;
 import edu.shep.demo.services.student.interfaces.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -20,7 +24,8 @@ public class StudentServiceImpl implements IStudentService {
     StudentRepository repository;
     @Autowired
     PersonRepository personRepository;
-
+    @Autowired
+    UserRepository userRepository;
 
     List<Person> persons = new ArrayList<>(
             Arrays.asList(
@@ -31,12 +36,22 @@ public class StudentServiceImpl implements IStudentService {
             )
     );
 
+    List<User> users = new ArrayList<>(
+            Arrays.asList(
+                    new User("stephan@gmail.com", new BCryptPasswordEncoder().encode("stephan"), new ArrayList<>(Arrays.asList(Role.USER_STUDENT))),
+                    new User("mark@gmail.com", new BCryptPasswordEncoder().encode("mark"), new ArrayList<>(Arrays.asList(Role.USER_STUDENT))),
+                    new User("admin", new BCryptPasswordEncoder().encode("admin"), new ArrayList<>(Arrays.asList(Role.ADMIN))),
+                    new User("anastasia@gmail.com", new BCryptPasswordEncoder().encode("anastasia"), new ArrayList<>(Arrays.asList(Role.USER_STUDENT)))
+
+            )
+    );
+
 
     List <Student> students = new ArrayList<>(
             Arrays.asList(
-                    new Student(persons.get(0), "passs", "Stephan@gamil.com"),
-                    new Student(persons.get(1), "password", "Mark@gamil.com"),
-                    new Student(persons.get(2), "word", "Anastasia@gmail.com")
+                    new Student(persons.get(0), users.get(0), true),
+                    new Student(persons.get(1), users.get(1), true),
+                    new Student(persons.get(2), users.get(2), true)
             )
     );
 
@@ -45,7 +60,9 @@ public class StudentServiceImpl implements IStudentService {
     @PostConstruct
     void init(){
        repository.deleteAll();
+       userRepository.deleteAll();
        personRepository.saveAll(persons);
+       userRepository.saveAll(users);
        repository.saveAll(students);
     }
 
