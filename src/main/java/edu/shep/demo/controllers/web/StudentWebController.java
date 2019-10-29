@@ -53,7 +53,6 @@ public class StudentWebController {
         unEnabled.setEnabled(isStudentEnabled);
         service.update(unEnabled);
 
-        //System.out.println("Student enabled = "+isStudentEnabled +"\n pesronServiceIsEnabledAnywhere = "+personService.isEnabledAnywhereById(service.get(id).getPerson().getId()));
         //checking if some student/teacher object containing exact person is enabled
         // and disable the person if both teacher and student is disabled
         if(!isStudentEnabled && !personService.isEnabledAnywhereById(service.get(id).getPerson().getId())) {

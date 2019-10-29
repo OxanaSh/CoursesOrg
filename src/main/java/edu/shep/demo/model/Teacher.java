@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 @Document
 public class Teacher {
@@ -15,7 +14,7 @@ public class Teacher {
     private Degree degree;
     private LocalDate experience;
     private User user;
-    private List <Subject> subject;
+    private List <Subject> subjects;
     private boolean enabled;
 
 
@@ -23,21 +22,21 @@ public class Teacher {
     }
 
 
-    public Teacher(Person person, Degree degree, LocalDate experience, User user, List<Subject> subject) {
+    public Teacher(Person person, User user, Degree degree, LocalDate experience, List<Subject> subjects) {
         this.person = person;
         this.degree = degree;
         this.experience = experience;
         this.user = user;
-        this.subject = subject;
+        this.subjects = subjects;
         this.enabled = true;
     }
 
-    public Teacher(Person person, Degree degree, LocalDate experience, User user, List<Subject> subject, boolean enabled) {
+    public Teacher(Person person, Degree degree, LocalDate experience, User user, List<Subject> subjects, boolean enabled) {
         this.person = person;
         this.degree = degree;
         this.experience = experience;
         this.user = user;
-        this.subject = subject;
+        this.subjects = subjects;
         this.enabled = enabled;
     }
 
@@ -49,12 +48,12 @@ public class Teacher {
         this.enabled = enabled;
     }
 
-    public List<Subject> getSubject() {
-        return subject;
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 
-    public void setSubject(List<Subject> subject) {
-        this.subject = subject;
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     public String getId() {
@@ -105,7 +104,7 @@ public class Teacher {
                 ", degree=" + degree +
                 ", experience=" + experience +
                 ", user=" + user +
-                ", subject=" + subject +
+                ", subject=" + subjects +
                 ", enabled=" + enabled +
                 '}';
     }

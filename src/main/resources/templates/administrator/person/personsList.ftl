@@ -11,8 +11,7 @@
             <th>patronymic</th>
             <th>date of birth</th>
             <th>phone number</th>
-            <th>Enabled</th>
-            <th></th>
+              <th></th>
             <th></th>
         </tr>
         </thead>

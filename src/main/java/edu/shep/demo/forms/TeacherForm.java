@@ -2,6 +2,9 @@ package edu.shep.demo.forms;
 
 import edu.shep.demo.model.Degree;
 import edu.shep.demo.model.Person;
+import edu.shep.demo.model.Subject;
+
+import java.util.List;
 
 public class TeacherForm {
     private String id;
@@ -15,12 +18,13 @@ public class TeacherForm {
     private boolean enabled;
     private Degree degree;
     private String experience;
-
+    private List <Subject> subjects;
 
     public TeacherForm() {
     }
 
-    public TeacherForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, boolean enabled, Degree degree, String experience) {
+    public TeacherForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, boolean enabled, Degree degree, String experience, List<Subject> subjects) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -31,9 +35,10 @@ public class TeacherForm {
         this.enabled = enabled;
         this.degree = degree;
         this.experience = experience;
+        this.subjects = subjects;
     }
 
-    public TeacherForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, Degree degree, String experience) {
+    public TeacherForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, boolean enabled, Degree degree, String experience, List<Subject> subjects) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -41,9 +46,32 @@ public class TeacherForm {
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
+        this.enabled = enabled;
         this.degree = degree;
         this.experience = experience;
+        this.subjects = subjects;
+    }
+
+    public TeacherForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, Degree degree, String experience, List<Subject> subjects) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
         this.enabled = true;
+        this.degree = degree;
+        this.experience = experience;
+        this.subjects = subjects;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     public String getId() {
