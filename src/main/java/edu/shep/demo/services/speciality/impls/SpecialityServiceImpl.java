@@ -29,8 +29,8 @@ public class SpecialityServiceImpl implements ISpecialityService {
 
     @PostConstruct
     void init(){
-        repository.deleteAll();
-        repository.saveAll(specialities);
+        //repository.deleteAll();
+      //  repository.saveAll(specialities);
     }
 
 

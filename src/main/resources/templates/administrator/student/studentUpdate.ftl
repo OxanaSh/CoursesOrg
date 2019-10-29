@@ -21,7 +21,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>email:<@spring.formInput "studentForm.username" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
+            <br/>
             <input type="submit" class="btn btn-secondary btn-lg active" value="Update"/>
         </form>
     </div>

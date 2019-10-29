@@ -28,8 +28,8 @@ public class SubjectServiceImpl implements ISubjectService {
 
     @PostConstruct
     void init(){
-        repository.deleteAll();
-        repository.saveAll(subjects);
+       // repository.deleteAll();
+       // repository.saveAll(subjects);
     }
 
     @Override

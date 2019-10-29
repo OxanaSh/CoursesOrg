@@ -5,24 +5,46 @@ import edu.shep.demo.model.Person;
 
 public class TeacherForm {
     private String id;
-    private Person person;
+    private String name;
+    private String surname;
+    private String patronymic;
+    private String dateOfBirth;
+    private String phoneNumber;
+    private String username;
+    private String password;
+    private boolean enabled;
     private Degree degree;
     private String experience;
-    private String password;
-    private String email;
 
 
     public TeacherForm() {
     }
 
-    public TeacherForm(Person person, Degree degree, String experience, String password, String email) {
-        this.person = person;
+    public TeacherForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, boolean enabled, Degree degree, String experience) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
         this.degree = degree;
         this.experience = experience;
-        this.password = password;
-        this.email = email;
     }
 
+    public TeacherForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username, String password, Degree degree, String experience) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.degree = degree;
+        this.experience = experience;
+        this.enabled = true;
+    }
 
     public String getId() {
         return id;
@@ -32,12 +54,68 @@ public class TeacherForm {
         this.id = id;
     }
 
-    public Person getPerson() {
-        return person;
+    public String getName() {
+        return name;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Degree getDegree() {
@@ -54,33 +132,5 @@ public class TeacherForm {
 
     public void setExperience(String experience) {
         this.experience = experience;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "TeacherForm{" +
-                "id='" + id + '\'' +
-                ", person=" + person +
-                ", degree=" + degree +
-                ", experience='" + experience + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 }

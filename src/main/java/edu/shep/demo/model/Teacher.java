@@ -14,8 +14,7 @@ public class Teacher {
     private Person person;
     private Degree degree;
     private LocalDate experience;
-    private String password;
-    private String email;
+    private User user;
     private List <Subject> subject;
     private boolean enabled;
 
@@ -23,23 +22,21 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(Person person, Degree degree, LocalDate experience, String password, String email, List<Subject> subject) {
+
+    public Teacher(Person person, Degree degree, LocalDate experience, User user, List<Subject> subject) {
         this.person = person;
         this.degree = degree;
         this.experience = experience;
-        this.password = password;
-        this.email = email;
+        this.user = user;
         this.subject = subject;
         this.enabled = true;
     }
 
-
-    public Teacher(Person person, Degree degree, LocalDate experience, String password, String email, List<Subject> subject, boolean enabled) {
+    public Teacher(Person person, Degree degree, LocalDate experience, User user, List<Subject> subject, boolean enabled) {
         this.person = person;
         this.degree = degree;
         this.experience = experience;
-        this.password = password;
-        this.email = email;
+        this.user = user;
         this.subject = subject;
         this.enabled = enabled;
     }
@@ -92,21 +89,12 @@ public class Teacher {
         this.experience = experience;
     }
 
-    public String getPassword() {
-        return password;
+    public User getUser() {
+        return user;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -116,9 +104,9 @@ public class Teacher {
                 ", person=" + person +
                 ", degree=" + degree +
                 ", experience=" + experience +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                ", user=" + user +
                 ", subject=" + subject +
+                ", enabled=" + enabled +
                 '}';
     }
 }

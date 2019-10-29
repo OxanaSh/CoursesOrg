@@ -59,12 +59,14 @@ public class StudentServiceImpl implements IStudentService {
 
     @PostConstruct
     void init(){
-       repository.deleteAll();
+      /* repository.deleteAll();
        userRepository.deleteAll();
        personRepository.deleteAll();
        personRepository.saveAll(persons);
        userRepository.saveAll(users);
        repository.saveAll(students);
+       */
+
     }
 
     //check
