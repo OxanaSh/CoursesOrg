@@ -20,7 +20,6 @@ public class Speciality {
     public Speciality() {
     }
 
-
     public Speciality(int code, String name, int payment, List<Subject> subjects) {
         this.code = code;
         this.name = name;
@@ -34,6 +33,14 @@ public class Speciality {
         this.name = name;
         this.payment = payment;
         this.subjects = subjects;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 

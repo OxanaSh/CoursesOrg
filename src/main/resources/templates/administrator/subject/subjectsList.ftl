@@ -10,6 +10,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Hours</th>
+            <th>Enabled</th>
             <th></th>
             <th></th>
         </tr>
@@ -19,8 +20,14 @@
                 <td>${subject.id}</td>
                 <td>${subject.getName()}</td>
                 <td>${subject.getHours()}</td>
-                <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
-                <td><a href="/admin/subject/update/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+                <#if subject.isEnabled()>
+                    <td>yes</td>
+                    <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                <#else>
+                    <td>no</td>
+                    <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
+                </#if>
+                 <td><a href="/admin/subject/update/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>
         </#list>

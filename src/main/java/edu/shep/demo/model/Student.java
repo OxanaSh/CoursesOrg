@@ -3,8 +3,6 @@ package edu.shep.demo.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Objects;
-
 //@Entity
 @Document
 public class Student {
@@ -12,16 +10,29 @@ public class Student {
     private String id;
     private Person person;
     private User user;
-    private boolean active;
+    private boolean enabled;
     //private String roles;
 
     public Student() {
     }
 
-    public Student(Person person, User user, boolean active) {
+    public Student(String id, Person person, User user, boolean enabled) {
+        this.id = id;
         this.person = person;
         this.user = user;
-        this.active = active;
+        this.enabled = enabled;
+    }
+
+    public Student(Person person, User user, boolean enabled) {
+        this.person = person;
+        this.user = user;
+        this.enabled = enabled;
+    }
+
+    public Student(Person person, User user) {
+        this.person = person;
+        this.user = user;
+        this.enabled = true;
     }
 
     public User getUser() {
@@ -32,12 +43,12 @@ public class Student {
         this.user = user;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getId() {
@@ -62,7 +73,7 @@ public class Student {
                 "id='" + id + '\'' +
                 ", person=" + person +
                 ", user=" + user +
-                ", active=" + active +
+                ", active=" + enabled +
                 '}';
     }
 }

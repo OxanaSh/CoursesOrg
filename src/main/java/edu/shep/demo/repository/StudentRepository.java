@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface StudentRepository  extends MongoRepository<Student, String> {
     //List<Student> getAllByGroup_IdOrderByPersonAsc();
     //Optional<Student> findByEmail(String email);
+    boolean existsByEnabledIsTrueAndPersonId(String personId);
 }

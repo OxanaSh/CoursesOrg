@@ -1,5 +1,6 @@
 package edu.shep.demo.repository;
 
+import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

@@ -3,17 +3,24 @@
 <@c.page title="student">
     <div class="container" style="border: 2px solid black; padding: 20px 20px">
 <legend>Update student information</legend>
-        <form name="speciality" action="" method="POST">
-            <br>Code:<@spring.formInput "specialityForm.code" "class='form-control'" "text"/>
+        <form name="student" action="" method="POST">
+            <br>Name:<@spring.formInput "studentForm.name" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Payment:<@spring.formInput "specialityForm.payment" "class='form-control'" "text"/>
+            <br>Surname:<@spring.formInput "studentForm.surname" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Name:<@spring.formInput "specialityForm.name" "class='form-control'" "text"/>
+            <br>Patronymic:<@spring.formInput "studentForm.patronymic" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>
-
-            <@spring.formCheckboxes "specialityForm.subjects", mavs "<br>"/>
-
+            <br>Date:<@spring.formInput "studentForm.dateOfBirth", "class='from-control' readonly"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <script>
+                $('#dateOfBirth').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+            <br>phone number:<@spring.formInput "studentForm.phoneNumber" "class='form-control'" "text"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <br>email:<@spring.formInput "studentForm.username" "class='form-control'" "text"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <input type="submit" class="btn btn-secondary btn-lg active" value="Update"/>
         </form>

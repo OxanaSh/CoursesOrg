@@ -27,6 +27,23 @@ public class Lesson {
         this.date = date;
         this.students = students;
         this.subject = subject;
+        this.enabled = true;
+    }
+
+    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Integer> students, Subject subject, boolean enabled) {
+        this.wasHeld = wasHeld;
+        this.date = date;
+        this.students = students;
+        this.subject = subject;
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Subject getSubject() {

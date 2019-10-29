@@ -2,7 +2,11 @@ package edu.shep.demo.services.person.impls;
 
 import edu.shep.demo.model.Person;
 import edu.shep.demo.repository.PersonRepository;
+import edu.shep.demo.repository.StudentRepository;
+import edu.shep.demo.repository.TeacherRepository;
 import edu.shep.demo.services.person.interfaces.IPersonService;
+import edu.shep.demo.services.student.impls.StudentServiceImpl;
+import edu.shep.demo.services.teacher.impls.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,13 @@ import java.util.List;
 public class PersonServiceImpl implements IPersonService {
     @Autowired
     PersonRepository repository;
+    @Autowired
+    TeacherServiceImpl teacherService;
+    @Autowired
+    StudentServiceImpl studentService;
+
+
+
 
     List<Person> persons = new ArrayList<>(
             Arrays.asList(
@@ -30,12 +41,14 @@ public class PersonServiceImpl implements IPersonService {
 
     @PostConstruct
     void init(){
-        repository.deleteAll();
-       repository.saveAll(persons);
+       //repository.saveAll(persons);
        // System.out.println("postconstruct started");
     }
 
 
+    public boolean isEnabledAnywhereById(String id){
+        return (teacherService.existsByEnabledIsTrueAndPersonId(id) || studentService.existsByEnabledIsTrueAndPersonId(id));
+    }
 
     @Override
     public List<Person> getAll() {

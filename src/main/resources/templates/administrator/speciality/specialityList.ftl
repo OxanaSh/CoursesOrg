@@ -10,6 +10,7 @@
             <th>code</th>
             <th>payment</th>
             <th>Subjects</th>
+            <th>Enabled</th>
             <th></th>
             <th></th>
         </tr>
@@ -27,7 +28,13 @@
                 <#else >
                     <td>object does not exist</td>
                 </#if>
-                <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+                <#if speciality.isEnabled()>
+                    <td>yes</td>
+                    <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                <#else>
+                    <td>no</td>
+                    <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
+                </#if>
                 <td><a href="/admin/speciality/update/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>

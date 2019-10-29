@@ -11,6 +11,7 @@
             <th>patronymic</th>
             <th>date of birth</th>
             <th>phone number</th>
+            <th>Enabled</th>
             <th></th>
             <th></th>
         </tr>
@@ -23,8 +24,13 @@
                 <td>${person.getPatronymic()}</td>
                 <td>${person.getDateOfBirth()}</td>
                 <td>${person.getPhoneNumber()}</td>
-                <td><a href="/admin/person/delete/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
-                <td><a href="/admin/person/update/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+                <#if person.isEnabled()>
+                    <td>yes</td>
+                    <td><a href="/admin/person/delete/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                <#else>
+                    <td>no</td>
+                    <td><a href="/admin/person/delete/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
+                </#if> <td><a href="/admin/person/update/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>
         </#list>

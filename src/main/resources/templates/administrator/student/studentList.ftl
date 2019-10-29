@@ -12,6 +12,7 @@
             <th>Date of birth</th>
             <th>phoneNumber</th>
             <th>Email</th>
+            <th>Enabled</th>
             <th></th>
             <th></th>
         </tr>
@@ -30,7 +31,15 @@
                 </#if>
                 <td>${student.getUser().getUsername()}</td>
 
-                <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+                <#if student.isEnabled()>
+                    <td>yes</td>
+                    <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                <#else>
+                    <td>no</td>
+                    <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
+                </#if>
+
+
                 <td><a href="/admin/student/update/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
             </tr>

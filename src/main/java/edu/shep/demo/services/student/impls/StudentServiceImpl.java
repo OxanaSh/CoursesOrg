@@ -51,7 +51,7 @@ public class StudentServiceImpl implements IStudentService {
             Arrays.asList(
                     new Student(persons.get(0), users.get(0), true),
                     new Student(persons.get(1), users.get(1), true),
-                    new Student(persons.get(2), users.get(2), true)
+                    new Student(persons.get(2), users.get(3), true)
             )
     );
 
@@ -61,6 +61,7 @@ public class StudentServiceImpl implements IStudentService {
     void init(){
        repository.deleteAll();
        userRepository.deleteAll();
+       personRepository.deleteAll();
        personRepository.saveAll(persons);
        userRepository.saveAll(users);
        repository.saveAll(students);
@@ -68,6 +69,8 @@ public class StudentServiceImpl implements IStudentService {
 
     //check
    // public List<Student> getAllByGroupId(){return repository.getAllByGroup_IdOrderByPersonAsc();}
+
+    public boolean existsByEnabledIsTrueAndPersonId(String personId){return  repository.existsByEnabledIsTrueAndPersonId(personId);}
 
 
     @Override
