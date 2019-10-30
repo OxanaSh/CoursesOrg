@@ -4,8 +4,6 @@
 <table class="table table-hover table-active table-bordered">
         <thead class="thead-dark">
         <tr>
-
-            <th>Id</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Patronymic</th>
@@ -19,7 +17,6 @@
         </thead>
         <#list students as student>
             <tr>
-                <td>${student.id}</td>
                  <#if student.getPerson()?has_content>
                      <td>${student.person.getName()}</td>
                      <td>${student.person.getSurname()}</td>
@@ -33,7 +30,7 @@
 
                 <#if student.isEnabled()>
                     <td>yes</td>
-                    <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                    <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
                 <#else>
                     <td>no</td>
                     <td><a href="/admin/student/delete/${student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>

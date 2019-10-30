@@ -8,8 +8,7 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -60,6 +59,11 @@
         .sidenav a {font-size: 13px;}
     }
 </style>
+<style>
+    hr.style5 {
+        border-top: 2px dashed #8c8b8b;
+    }
+</style>
 <body>
 </body>
 <nav class="navbar navbar-light sticky-top" style="background-color: #f2f2f2; border-bottom: 2px solid black;" >
@@ -92,8 +96,8 @@
     <a href="/admin/person/list" class="w3-bar-item w3-button w3-hover-white">Person</a>
     <a href="/admin/student/list" class="w3-bar-item w3-button w3-hover-white">Student</a>
     <a href="/admin/teacher/list" class="w3-bar-item w3-button w3-hover-white">Teacher</a>
-    <hr style="color: whitesmoke; size: 1px; width: 90%;"/>
-    <a href="/admin/user/list" class="w3-bar-item w3-button w3-hover-white">User</a>
+    <hr class="style5"/>
+        <a href="/admin/user/list" class="w3-bar-item w3-button w3-hover-white">User</a>
 
 </div>
 

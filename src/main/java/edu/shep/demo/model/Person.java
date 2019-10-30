@@ -21,6 +21,16 @@ public class Person {
     public Person() {
     }
 
+    public Person(String id, String name, String surname, String patronymic, LocalDate dateOfBirth, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.enabled = true;
+    }
+
     public Person(String id, String name, String surname, String patronymic, LocalDate dateOfBirth, String phoneNumber, boolean enabled) {
         this.id = id;
         this.name = name;

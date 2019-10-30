@@ -4,7 +4,7 @@
     <div class="container" style="border: 2px solid black; padding: 20px 20px" xmlns="http://www.w3.org/1999/html">
 
 
-    <legend>Add student</legend>
+    <legend>Add teacher</legend>
         <form name="teacher" action="" method="POST">
             <br>Name:<@spring.formInput "teacherForm.name" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

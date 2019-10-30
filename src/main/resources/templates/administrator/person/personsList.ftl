@@ -5,19 +5,18 @@
         <thead class="thead-dark">
         <tr>
 
-            <th>Id</th>
             <th>Name</th>
             <th>surname</th>
             <th>patronymic</th>
             <th>date of birth</th>
             <th>phone number</th>
-              <th></th>
+            <th>Enabled</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>
         <#list persons as person>
             <tr>
-                <td>${person.id}</td>
                 <td>${person.getName()}</td>
                 <td>${person.getSurname()}</td>
                 <td>${person.getPatronymic()}</td>
@@ -25,7 +24,7 @@
                 <td>${person.getPhoneNumber()}</td>
                 <#if person.isEnabled()>
                     <td>yes</td>
-                    <td><a href="/admin/person/delete/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                    <td><a href="/admin/person/delete/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
                 <#else>
                     <td>no</td>
                     <td><a href="/admin/person/delete/${person.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>

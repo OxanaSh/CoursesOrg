@@ -4,8 +4,6 @@
     <table class="table table-hover table-active table-bordered">
         <thead class="thead-dark">
         <tr>
-
-            <th>Id</th>
             <th>Name</th>
             <th>code</th>
             <th>payment</th>
@@ -17,7 +15,6 @@
         </thead>
         <#list specialities as speciality>
             <tr>
-                <td>${speciality.id}</td>
                 <td>${speciality.getName()}</td>
                 <td>${speciality.getCode()}</td>
                 <td>${speciality.getPayment()}</td>
@@ -30,7 +27,7 @@
                 </#if>
                 <#if speciality.isEnabled()>
                     <td>yes</td>
-                    <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                    <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
                 <#else>
                     <td>no</td>
                     <td><a href="/admin/speciality/delete/${speciality.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>

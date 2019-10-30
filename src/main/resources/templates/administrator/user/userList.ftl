@@ -4,8 +4,6 @@
 <table class="table table-hover table-active table-bordered">
         <thead class="thead-dark">
         <tr>
-
-            <th>Id</th>
             <th>Username</th>
             <th>Authorities</th>
             <th>Enabled</th>
@@ -15,7 +13,6 @@
         </thead>
         <#list users as user>
             <tr>
-                <td>${user.id}</td>
                 <td>${user.getUsername()}</td>
                 <#if user.getAuthorities()?has_content>
                     <td><#list user.getAuthorities() as authorities>
@@ -27,7 +24,7 @@
 
                 <#if user.isEnabled()>
                     <td>yes</td>
-                    <td><a href="/admin/user/delete/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                    <td><a href="/admin/user/delete/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
                 <#else>
                         <td>no</td>
                         <td><a href="/admin/user/delete/${user.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>

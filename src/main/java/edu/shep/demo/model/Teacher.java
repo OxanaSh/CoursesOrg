@@ -21,6 +21,25 @@ public class Teacher {
     public Teacher() {
     }
 
+    public Teacher(String id, Person person, User user, Degree degree, LocalDate experience,  List<Subject> subjects) {
+        this.id = id;
+        this.person = person;
+        this.degree = degree;
+        this.experience = experience;
+        this.user = user;
+        this.subjects = subjects;
+        this.enabled = true;
+    }
+
+    public Teacher(String id, Person person, User user, Degree degree, LocalDate experience,  List<Subject> subjects, boolean enabled) {
+        this.id = id;
+        this.person = person;
+        this.degree = degree;
+        this.experience = experience;
+        this.user = user;
+        this.subjects = subjects;
+        this.enabled = enabled;
+    }
 
     public Teacher(Person person, User user, Degree degree, LocalDate experience, List<Subject> subjects) {
         this.person = person;

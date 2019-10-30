@@ -36,7 +36,7 @@
     </form>
     <#else>
         <a href="/login" class="btn btn-secondary btn-lg active" role="form" aria-pressed="true">Log in</a>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
     </#if>
 
 
@@ -48,15 +48,36 @@
 
 </nav>
 
+<section class="main">
+
+    <!-- section -->
+    <section class="black">
+        <header class="">
+            <h1>Courses</h1>
+        </header>
+    </section><!-- end section -->
+
+    <!-- section -->
+    <section class="black">
+        <div class="wrap">
+
+            <div class="separator01"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida imperdiet magna in vehicula. Sed egestas orci non nunc rutrum, sit amet scelerisque ligula scelerisque. Curabitur mauris ipsum, cursus quis.</p>
+        </div>
+    </section><!-- end section -->
+
+    <!-- section -->
+    <section class="white">
+        <div class="wrap">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida imperdiet magna in vehicula. Sed egestas orci non nunc rutrum, sit amet scelerisque ligula scelerisque. Curabitur mauris ipsum, cursus quis.</p>
+            <div class="separator02"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget erat volutpat, malesuada arcu vitae, iaculis diam. Pellentesque sagittis lacus tellus, quis faucibus dolor semper sit amet. Praesent placerat faucibus nibh. Nulla non mattis erat. Morbi ultrices, diam vitae ornare tincidunt, sapien libero sodales lorem, vitae commodo nisl mi at leo. Vestibulum posuere aliquet consequat. Vivamus mattis eget eros eget maximus. Ut vel neque iaculis, luctus metus ut, ultricies dolor.</p>
+        </div>
+    </section>
 
 
-<div class="container">
 
-    <h4>Courses organization</h4>
-
-
-</div>
-
+</section><!-- end main -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

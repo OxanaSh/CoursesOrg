@@ -71,8 +71,10 @@ public class SpecialityWebController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(Model model, @PathVariable(value="id") String id){
         Speciality specialityToUpdate = service.get(id);
+        List<String> subList=new ArrayList<>();
+        for(int i=0; i<specialityToUpdate.getSubjects().size(); i++){subList.add(specialityToUpdate.getSubjects().get(i).getId());}
         SpecialityForm specialityForm = new SpecialityForm(Integer.toString(specialityToUpdate.getCode()), specialityToUpdate.getName(),
-               Integer.toString(specialityToUpdate.getPayment()), null);
+               Integer.toString(specialityToUpdate.getPayment()), subList);
         specialityForm.setId(specialityToUpdate.getId());
 
         Map<String, String> mavs = subjectService.getAll().stream()

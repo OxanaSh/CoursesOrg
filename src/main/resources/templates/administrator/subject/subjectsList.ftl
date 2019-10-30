@@ -6,8 +6,6 @@
     <table class="table table-hover table-active table-bordered">
         <thead class="thead-dark">
         <tr>
-
-            <th>Id</th>
             <th>Name</th>
             <th>Hours</th>
             <th>Enabled</th>
@@ -17,12 +15,11 @@
         </thead>
         <#list subjects as subject>
             <tr>
-                <td>${subject.id}</td>
                 <td>${subject.getName()}</td>
                 <td>${subject.getHours()}</td>
                 <#if subject.isEnabled()>
                     <td>yes</td>
-                    <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">un enable</a></td>
+                    <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
                 <#else>
                     <td>no</td>
                     <td><a href="/admin/subject/delete/${subject.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
