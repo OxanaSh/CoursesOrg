@@ -37,7 +37,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
 
-            <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>
+            <input type="submit" class="btn btn-secondary btn-lg active" value="Update"/>
         </form>
     </div>
 </@c.page>

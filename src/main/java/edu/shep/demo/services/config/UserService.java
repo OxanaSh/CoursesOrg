@@ -3,6 +3,8 @@ package edu.shep.demo.services.config;
 import com.mongodb.lang.NonNull;
 import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
+import edu.shep.demo.repository.StudentRepository;
+import edu.shep.demo.repository.TeacherRepository;
 import edu.shep.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +24,10 @@ import java.util.Optional;
 public class UserService implements UserDetailsService, IUserService{
     @Autowired
     private UserRepository repository;
-
+    @Autowired
+    TeacherRepository teacherService;
+    @Autowired
+    StudentRepository studentService;
 
     @PostConstruct
     public void init() {
@@ -53,7 +58,9 @@ public class UserService implements UserDetailsService, IUserService{
         return  Optional.ofNullable(repository.findByUsername(username));
     }
 
-
+    public boolean isEnabledAnywhereById(String id){
+        return (teacherService.existsByEnabledIsTrueAndUserId(id) || studentService.existsByEnabledIsTrueAndUserId(id));
+    }
     @Override
     public List<User> getAll() {
         return repository.findAll();

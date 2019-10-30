@@ -17,6 +17,9 @@ public class TeacherServiceImpl implements ITeacherService {
 
     public boolean existsByEnabledIsTrueAndPersonId(String personId){return  repository.existsByEnabledIsTrueAndPersonId( personId);}
 
+    public Teacher findByPersonId(String id){return repository.findByPersonId(id);}
+
+
     @Override
     public List<Teacher> getAll() {
         return repository.findAll();

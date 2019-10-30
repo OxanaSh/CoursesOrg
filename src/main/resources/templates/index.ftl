@@ -26,8 +26,8 @@
     <#if isAuthenticated>
         <#list roles as role>
             <#if role == "ADMIN">
-            <a href="/admin/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Administrator menu</a>
-            </#if>
+            <div class="container"><a href="/admin/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Administrator menu</a>
+            </div></#if>
         </#list>
 
         <form action="/logout" method="POST">

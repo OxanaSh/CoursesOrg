@@ -14,7 +14,7 @@ public class Lesson {
     private String id;
     private boolean wasHeld;
     private LocalDate date;
-    private Map<Student, Integer> students;
+    private Map<Student, Boolean> students;
     private Subject subject;
     private boolean enabled;
 
@@ -22,7 +22,16 @@ public class Lesson {
     public Lesson() {
     }
 
-    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Integer> students, Subject subject) {
+    public Lesson(String id, boolean wasHeld, LocalDate date, Map<Student, Boolean> students, Subject subject, boolean enabled) {
+        this.id = id;
+        this.wasHeld = wasHeld;
+        this.date = date;
+        this.students = students;
+        this.subject = subject;
+        this.enabled = enabled;
+    }
+
+    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Boolean> students, Subject subject) {
         this.wasHeld = wasHeld;
         this.date = date;
         this.students = students;
@@ -30,7 +39,7 @@ public class Lesson {
         this.enabled = true;
     }
 
-    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Integer> students, Subject subject, boolean enabled) {
+    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Boolean> students, Subject subject, boolean enabled) {
         this.wasHeld = wasHeld;
         this.date = date;
         this.students = students;
@@ -78,11 +87,11 @@ public class Lesson {
         this.date = date;
     }
 
-    public Map<Student, Integer> getStudents() {
+    public Map<Student, Boolean> getStudents() {
         return students;
     }
 
-    public void setStudents(Map<Student, Integer> students) {
+    public void setStudents(Map<Student, Boolean> students) {
         this.students = students;
     }
 
@@ -92,21 +101,9 @@ public class Lesson {
                 "id='" + id + '\'' +
                 ", wasHeld=" + wasHeld +
                 ", date=" + date +
+                ", students=" + students +
+                ", subject=" + subject +
+                ", enabled=" + enabled +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Lesson lesson = (Lesson) o;
-        return wasHeld == lesson.wasHeld &&
-                Objects.equals(id, lesson.id) &&
-                Objects.equals(date, lesson.date);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, wasHeld, date);
     }
 }

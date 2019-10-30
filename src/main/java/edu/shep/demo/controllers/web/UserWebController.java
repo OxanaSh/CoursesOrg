@@ -3,6 +3,7 @@ package edu.shep.demo.controllers.web;
 import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import edu.shep.demo.services.config.UserService;
+import edu.shep.demo.services.person.impls.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class UserWebController {
 
     @Autowired
     UserService service;
+    @Autowired
+    private PersonServiceImpl personService;
+
 
     @RequestMapping("/list")
     public String list(Model model){
@@ -34,6 +38,7 @@ public class UserWebController {
         User unEnabled = service.get(id);
        if(unEnabled.isEnabled()){
         unEnabled.setEnabled(false);
+        //personService.disableEveryObjectContainingPersonById();
        }
        else unEnabled.setEnabled(true);
        service.update(unEnabled);

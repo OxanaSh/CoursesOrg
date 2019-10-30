@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TeacherRepository  extends MongoRepository<Teacher, String> {
      boolean existsByEnabledIsTrueAndPersonId(String personId);
+     boolean existsByEnabledIsTrueAndUserId(String userId);
+     Teacher findByPersonId(String id);
 }
 

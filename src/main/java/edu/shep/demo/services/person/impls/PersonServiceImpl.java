@@ -1,9 +1,13 @@
 package edu.shep.demo.services.person.impls;
 
 import edu.shep.demo.model.Person;
+import edu.shep.demo.model.Student;
+import edu.shep.demo.model.Teacher;
+import edu.shep.demo.model.User;
 import edu.shep.demo.repository.PersonRepository;
 import edu.shep.demo.repository.StudentRepository;
 import edu.shep.demo.repository.TeacherRepository;
+import edu.shep.demo.services.config.UserService;
 import edu.shep.demo.services.person.interfaces.IPersonService;
 import edu.shep.demo.services.student.impls.StudentServiceImpl;
 import edu.shep.demo.services.teacher.impls.TeacherServiceImpl;
@@ -16,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 @Service
 public class PersonServiceImpl implements IPersonService {
     @Autowired
@@ -24,7 +29,8 @@ public class PersonServiceImpl implements IPersonService {
     TeacherServiceImpl teacherService;
     @Autowired
     StudentServiceImpl studentService;
-
+    @Autowired
+    UserService userService;
 
 
 
@@ -49,6 +55,24 @@ public class PersonServiceImpl implements IPersonService {
     public boolean isEnabledAnywhereById(String id){
         return (teacherService.existsByEnabledIsTrueAndPersonId(id) || studentService.existsByEnabledIsTrueAndPersonId(id));
     }
+
+    public void disableEveryObjectContainingPersonById(String id){
+        Teacher newTeacher = teacherService.findByPersonId(id);
+        Student newStudent = studentService.findByPersonId(id);
+        User newUser = newStudent.getUser();
+        Person newPerson = this.get(id);
+
+        newTeacher.setEnabled(false);
+        newStudent.setEnabled(false);
+        newUser.setEnabled(false);
+        newPerson.setEnabled(false);
+
+        teacherService.update(newTeacher);
+        studentService.update(newStudent);
+        userService.update(newUser);
+        repository.save(newPerson);
+    }
+
 
     @Override
     public List<Person> getAll() {

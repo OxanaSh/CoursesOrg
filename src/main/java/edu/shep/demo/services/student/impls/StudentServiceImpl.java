@@ -1,9 +1,6 @@
 package edu.shep.demo.services.student.impls;
 
-import edu.shep.demo.model.Person;
-import edu.shep.demo.model.Role;
-import edu.shep.demo.model.Student;
-import edu.shep.demo.model.User;
+import edu.shep.demo.model.*;
 import edu.shep.demo.repository.PersonRepository;
 import edu.shep.demo.repository.StudentRepository;
 import edu.shep.demo.repository.UserRepository;
@@ -74,6 +71,7 @@ public class StudentServiceImpl implements IStudentService {
 
     public boolean existsByEnabledIsTrueAndPersonId(String personId){return  repository.existsByEnabledIsTrueAndPersonId(personId);}
 
+    public Student findByPersonId(String id){return repository.findByPersonId(id);}
 
     @Override
     public List<Student> getAll() {

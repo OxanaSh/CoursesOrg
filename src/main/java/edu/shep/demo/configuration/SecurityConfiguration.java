@@ -1,6 +1,7 @@
 package edu.shep.demo.configuration;
 
 import edu.shep.demo.services.config.UserService;
+import edu.shep.demo.services.person.impls.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,6 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 */
     @Autowired
     private UserService userService;
+
+
 
     @Bean
     public PasswordEncoder bcryptPasswordEncoder() {

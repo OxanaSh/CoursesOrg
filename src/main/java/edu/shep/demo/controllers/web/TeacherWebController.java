@@ -131,7 +131,7 @@ public class TeacherWebController {
         Person newPerson = new Person(service.get(id).getPerson().getId(), teacherForm.getName(), teacherForm.getSurname(),
                 teacherForm.getPatronymic(), newDateOfBirth, teacherForm.getPhoneNumber(), service.get(id).getPerson().isEnabled());
         User newUser = new User (service.get(id).getUser().getId(),teacherForm.getUsername(),
-                new BCryptPasswordEncoder().encode(teacherForm.getPassword()),
+                service.get(id).getUser().getPassword(),
                 new ArrayList<>(Arrays.asList(Role.USER_TEACHER)), service.get(id).getUser().isEnabled());
         Teacher newTeacher = new Teacher(id, newPerson, newUser, teacherForm.getDegree(),
                 newExperience, newSubjects, service.get(id).isEnabled());
@@ -166,7 +166,7 @@ public class TeacherWebController {
             personService.update(newPerson);
         }
 
-        return "redirect:/admin/student/list";
+        return "redirect:/admin/teacher/list";
     }
 
 

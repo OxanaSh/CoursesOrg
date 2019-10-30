@@ -12,4 +12,6 @@ public interface StudentRepository  extends MongoRepository<Student, String> {
     //List<Student> getAllByGroup_IdOrderByPersonAsc();
     //Optional<Student> findByEmail(String email);
     boolean existsByEnabledIsTrueAndPersonId(String personId);
+    boolean existsByEnabledIsTrueAndUserId(String userId);
+    Student findByPersonId(String id);
 }
