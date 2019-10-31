@@ -51,6 +51,8 @@ public class Subject {
         return name;
     }
 
+    public String getNameWithHours(){ return name+'('+hours+')';}
+
     public void setName(String name) {
         this.name = name;
     }

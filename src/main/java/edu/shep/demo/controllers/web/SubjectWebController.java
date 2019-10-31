@@ -1,7 +1,9 @@
 package edu.shep.demo.controllers.web;
 
 import edu.shep.demo.forms.SubjectForm;
+import edu.shep.demo.model.Speciality;
 import edu.shep.demo.model.Subject;
+import edu.shep.demo.services.speciality.impls.SpecialityServiceImpl;
 import edu.shep.demo.services.subject.impls.SubjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ import java.util.List;
 public class SubjectWebController {
     @Autowired
     SubjectServiceImpl service;
+    @Autowired
+    SpecialityServiceImpl specialityService;
+
 
     @RequestMapping ("/list")
     public String list(Model model){
@@ -27,7 +32,10 @@ public class SubjectWebController {
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable(value = "id") String id){
-        service.delete(id);
+        //service.delete(id);
+        Subject newSubject = service.get(id);
+        newSubject.setEnabled(!newSubject.isEnabled());
+        service.update(newSubject);
         return  "redirect:/admin/subject/list";
     }
 
@@ -44,7 +52,7 @@ public class SubjectWebController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model, @ModelAttribute("subjectForm") SubjectForm subjectForm){
         Subject newSubject = new Subject(subjectForm.getName(), Double.parseDouble(subjectForm.getHours()));
-        service.create(newSubject);
+        if(!service.existsByNameAndHours(newSubject.getName(), newSubject.getHours())) service.create(newSubject);
         return "redirect:/admin/subject/list";
     }
 
@@ -66,6 +74,23 @@ public class SubjectWebController {
     public String update(Model model, @ModelAttribute("subjectForm") SubjectForm subjectForm, @PathVariable(value="id") String id){
         Subject newSubject = new Subject(subjectForm.getName(), Double.parseDouble(subjectForm.getHours()));
         newSubject.setId(id);
+        List<Speciality> specialitiesToUpdate = specialityService.findAllBySubjectsContains(service.get(id));
+        System.out.println(specialitiesToUpdate);
+        List<Subject> subjects;
+        if(specialitiesToUpdate != null){
+            for (Speciality specialityToUpdate:specialitiesToUpdate) {
+                subjects = specialityToUpdate.getSubjects();
+                for (Subject subject:subjects) {
+                    if(subject==service.get(id)) {subject = newSubject;
+                    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                                  specialityToUpdate.setSubjects(subjects);
+                                                  specialityService.update(specialityToUpdate);
+                                                  break;
+                    }
+                }
+            }
+        }
+
         service.update(newSubject);
         return "redirect:/admin/subject/list";
     }

@@ -31,7 +31,7 @@ public class PersonWebController {
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable(value = "id") String id){
-        service.delete(id);
+        service.disableEveryObjectContainingPersonById(id);
         return  "redirect:/admin/person/list";
     }
 

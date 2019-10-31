@@ -32,6 +32,16 @@ public class SubjectServiceImpl implements ISubjectService {
        // repository.saveAll(subjects);
     }
 
+
+    public List<Subject> getAllByEnabledIsTrue(){
+         return repository.findAllByEnabledIsTrue();
+    }
+
+
+    public boolean existsByNameAndHours(String name, double hours) {
+        return repository.existsByNameAndHours(name, hours);
+    }
+
     @Override
     public List<Subject> getAll() {
         return repository.findAll();

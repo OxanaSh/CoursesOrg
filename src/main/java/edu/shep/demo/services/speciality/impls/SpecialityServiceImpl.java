@@ -33,7 +33,9 @@ public class SpecialityServiceImpl implements ISpecialityService {
       //  repository.saveAll(specialities);
     }
 
-
+    public List<Speciality> findAllBySubjectsContains(Subject subject){
+        return repository.findAllBySubjectsContains(subject);
+    }
 
     @Override
     public List<Speciality> getAll() {

@@ -44,10 +44,14 @@ public class SpecialityWebController {
     public String create(Model model){
         SpecialityForm specialityForm = new SpecialityForm();
 
-        Map<String, String> mavs = subjectService.getAll().stream()
-                .collect(Collectors.toMap(Subject::getId, Subject::getName));
+        //List<Subject> allSubjects = subjectService.getAllByEnabledIsTrue();
 
-        model.addAttribute("mavs", mavs);
+        Map<String, String> subjects = subjectService.getAllByEnabledIsTrue().stream()
+                .collect(Collectors.toMap(Subject::getId, Subject::getNameWithHours));
+
+
+
+        model.addAttribute("mavs", subjects);
         model.addAttribute("specialityForm", specialityForm);
         return  "administrator/speciality/specialityAdd";
     }
@@ -72,17 +76,27 @@ public class SpecialityWebController {
     public String update(Model model, @PathVariable(value="id") String id){
         Speciality specialityToUpdate = service.get(id);
         List<String> subList=new ArrayList<>();
-        for(int i=0; i<specialityToUpdate.getSubjects().size(); i++){subList.add(specialityToUpdate.getSubjects().get(i).getId());}
+        Map<String, String> subjects = subjectService.getAllByEnabledIsTrue().stream()
+                .collect(Collectors.toMap(Subject::getId, Subject::getNameWithHours));
+
+        if (specialityToUpdate.getSubjects() != null) {
+            for (int i = 0; i < specialityToUpdate.getSubjects().size(); i++) {
+                subList.add(specialityToUpdate.getSubjects().get(i).getId());
+            }
+
+            for (Subject subject:service.get(id).getSubjects()) {
+                if(!subjects.containsKey(subject.getId())) subjects.put(subject.getId(), subject.getNameWithHours());
+            }
+        }
+        else subList = null;
+
+
         SpecialityForm specialityForm = new SpecialityForm(Integer.toString(specialityToUpdate.getCode()), specialityToUpdate.getName(),
                Integer.toString(specialityToUpdate.getPayment()), subList);
         specialityForm.setId(specialityToUpdate.getId());
 
-        Map<String, String> mavs = subjectService.getAll().stream()
-                .collect(Collectors.toMap(Subject::getId, Subject::getName));
-
-
         model.addAttribute("specialityForm", specialityForm);
-        model.addAttribute("mavs", mavs);
+        model.addAttribute("mavs", subjects);
         return "administrator/speciality/specialityUpdate";
     }
 
