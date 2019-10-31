@@ -91,9 +91,9 @@
 
 <div class="sidenav">
     <a href="#" class="w3-bar-item w3-button w3-hover-white">Groups</a>
-    <a href="/admin/subject/list" class="w3-bar-item w3-button w3-hover-white">Subjects</a>
     <a href="/admin/speciality/list" class="w3-bar-item w3-button w3-hover-white">Specialities</a>
-    <a href="/admin/person/list" class="w3-bar-item w3-button w3-hover-white">Person</a>
+    <a href="/admin/subject/list" class="w3-bar-item w3-button w3-hover-white">Subjects</a>
+   <!-- <a href="/admin/person/list" class="w3-bar-item w3-button w3-hover-white">Person</a> -->
     <a href="/admin/student/list" class="w3-bar-item w3-button w3-hover-white">Student</a>
     <a href="/admin/teacher/list" class="w3-bar-item w3-button w3-hover-white">Teacher</a>
     <hr class="style5"/>

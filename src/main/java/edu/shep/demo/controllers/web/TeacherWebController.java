@@ -146,7 +146,7 @@ public class TeacherWebController {
     public String delete(@PathVariable(value = "id") String id){
         boolean isTeacherEnabled;
         if(service.get(id).getPerson().isEnabled() ) {
-            isTeacherEnabled = service.get(id).isEnabled()?false:true;
+            isTeacherEnabled = !service.get(id).isEnabled();
         }
         else {isTeacherEnabled = false;}
 
