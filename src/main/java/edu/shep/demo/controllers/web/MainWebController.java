@@ -1,5 +1,6 @@
 package edu.shep.demo.controllers.web;
 
+import edu.shep.demo.forms.ApplicationForm;
 import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import org.springframework.security.core.Authentication;
@@ -54,6 +55,16 @@ public class MainWebController {
 
         return "login";
     }
+
+    @RequestMapping(value = "/application", method = RequestMethod.GET)
+    String application(Model model){
+        ApplicationForm applicationForm = new ApplicationForm();
+
+
+        return "application";
+    }
+
+
 
     @RequestMapping ("/admin")
     String mainAdmin(){

@@ -16,27 +16,41 @@ public class Application {
     private boolean approval;
     private LocalDate dateOfFilling;
     private boolean enabled;
+    private Occupation whomWantToBe;
+
 
 
     public Application() {
     }
 
-    public Application(Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling) {
-        this.person = person;
-        this.speciality = speciality;
-        this.formOfStudying = formOfStudying;
-        this.approval = approval;
-        this.dateOfFilling = dateOfFilling;
-        this.enabled = true;
-    }
 
-    public Application(Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, boolean enabled) {
+    public Application(String id, Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe, boolean enabled) {
+        this.id = id;
         this.person = person;
         this.speciality = speciality;
         this.formOfStudying = formOfStudying;
         this.approval = approval;
         this.dateOfFilling = dateOfFilling;
         this.enabled = enabled;
+        this.whomWantToBe = whomWantToBe;
+    }
+
+    public Application(Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe) {
+        this.person = person;
+        this.speciality = speciality;
+        this.formOfStudying = formOfStudying;
+        this.approval = approval;
+        this.dateOfFilling = dateOfFilling;
+        this.enabled = true;
+        this.whomWantToBe = whomWantToBe;
+    }
+
+    public Occupation getWhomWantToBe() {
+        return whomWantToBe;
+    }
+
+    public void setWhomWantToBe(Occupation whomWantToBe) {
+        this.whomWantToBe = whomWantToBe;
     }
 
     public boolean isEnabled() {
@@ -96,24 +110,6 @@ public class Application {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Application that = (Application) o;
-        return approval == that.approval &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(person, that.person) &&
-                Objects.equals(speciality, that.speciality) &&
-                formOfStudying == that.formOfStudying &&
-                Objects.equals(dateOfFilling, that.dateOfFilling);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, person, speciality, formOfStudying, approval, dateOfFilling);
-    }
-
-    @Override
     public String toString() {
         return "Application{" +
                 "id='" + id + '\'' +
@@ -122,6 +118,8 @@ public class Application {
                 ", formOfStudying=" + formOfStudying +
                 ", approval=" + approval +
                 ", dateOfFilling=" + dateOfFilling +
+                ", enabled=" + enabled +
+                ", whomWantToBe=" + whomWantToBe +
                 '}';
     }
 }

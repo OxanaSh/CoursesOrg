@@ -75,6 +75,8 @@ public class SubjectWebController {
         Subject newSubject = new Subject(subjectForm.getName(), Double.parseDouble(subjectForm.getHours()));
         newSubject.setId(id);
         List<Speciality> specialitiesToUpdate = specialityService.findAllBySubjectsContains(service.get(id));
+
+        /*later
         System.out.println(specialitiesToUpdate);
         List<Subject> subjects;
         if(specialitiesToUpdate != null){
@@ -83,6 +85,7 @@ public class SubjectWebController {
                 for (Subject subject:subjects) {
                     if(subject==service.get(id)) {subject = newSubject;
                     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        System.out.println(subjects);
                                                   specialityToUpdate.setSubjects(subjects);
                                                   specialityService.update(specialityToUpdate);
                                                   break;
@@ -90,7 +93,7 @@ public class SubjectWebController {
                 }
             }
         }
-
+        */
         service.update(newSubject);
         return "redirect:/admin/subject/list";
     }
