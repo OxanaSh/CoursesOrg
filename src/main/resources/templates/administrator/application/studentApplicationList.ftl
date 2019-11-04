@@ -9,30 +9,30 @@
             <th>Date of birth</th>
             <th>Email</th>
             <th>Phone number</th>
-            <th>Degree</th>
+            <th>Speciality</th>
             <th>Is approved</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
-        <#list teachers as teacher>
+        <#list students as student>
             <tr>
-                <td>${teacher.dateOfFilling}</td>
-                <td>${teacher.getPerson().getFullName()}</td>
-                <td>${teacher.person.getDateOfBirth()}</td>
-                <td>${teacher.email}</td>
-                <td>${teacher.person.getPhoneNumber()}</td>
-                <td>${teacher.degree}</td>
-                <#if teacher.approval == false && teacher.enabled == false>
+                <td>${student.dateOfFilling}</td>
+                <td>${student.getPerson().getFullName()}</td>
+                <td>${student.person.getDateOfBirth()}</td>
+                <td>${student.email}</td>
+                <td>${student.person.getPhoneNumber()}</td>
+                <td>${student.speciality.getName()}</td>
+                <#if student.approval == false && student.enabled == false>
                     <td><p class="text-danger">Rejected</p></td>
-                    <#elseif teacher.approval == true && teacher.enabled == true>
+                    <#elseif student.approval == true && student.enabled == true>
                         <td><p class="text-success">Approved</p></td>
                     <#else>
                     <td>
-                        <a class="btn" href="/admin/changeApproved/${teacher.id}/true" role="button">
+                        <a class="btn" href="/admin/changeApproved/${student.id}/true" role="button">
                             <img src="https://img.icons8.com/carbon-copy/64/000000/ok.png" width="50" height="50">
                         </a>
-                        <a class="btn" href="/admin/changeApproved/${teacher.id}/false" role="button">
+                        <a class="btn" href="/admin/changeApproved/${student.id}/false" role="button">
                             <img src="https://img.icons8.com/carbon-copy/100/000000/cancel.png" width="50" height="50">
                         </a>
                     </td>

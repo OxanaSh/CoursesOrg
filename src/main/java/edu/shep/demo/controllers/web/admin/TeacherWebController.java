@@ -18,10 +18,7 @@ import javax.print.attribute.EnumSyntax;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequestMapping("/admin/teacher")
@@ -39,7 +36,8 @@ public class TeacherWebController {
 
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("teachers", service.getAll());
+        List<Teacher> list = service.getAll();
+        model.addAttribute("teachers", list);
         return "administrator/teacher/teacherList";
     }
 

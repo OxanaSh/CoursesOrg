@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collector;
@@ -30,6 +31,7 @@ public class SpecialityWebController {
     @RequestMapping ("/list")
     public String list(Model model){
         List<Speciality> list = service.getAll();
+        list.sort(Comparator.comparing(Speciality::getCode));
         model.addAttribute("specialities", list);
         return "administrator/speciality/specialityList";
     }

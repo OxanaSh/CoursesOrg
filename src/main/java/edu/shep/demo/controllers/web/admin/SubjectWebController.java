@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RequestMapping("/admin/subject")
@@ -26,6 +27,7 @@ public class SubjectWebController {
     @RequestMapping ("/list")
     public String list(Model model){
         List<Subject> list = service.getAll();
+        list.sort(Comparator.comparing(Subject::getNameWithHours));
         model.addAttribute("subjects", list);
         return "administrator/subject/subjectsList";
     }

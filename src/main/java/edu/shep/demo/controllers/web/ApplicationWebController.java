@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -57,8 +59,18 @@ public class ApplicationWebController {
 
     @RequestMapping("/admin/teacher/application")
     public String teacherApplication(Model model){
-        model.addAttribute("teachers", applicationService.getAllTeachers());
+        List<Application> teachers = applicationService.getAllTeachers();
+        teachers.sort(Comparator.comparing(Application::getDateOfFilling));
+        model.addAttribute("teachers", teachers);
         return "/administrator/application/teacherApplicationList";
+    }
+
+    @RequestMapping("/admin/student/application")
+    public String studentApplication(Model model){
+        List<Application> students = applicationService.getAllStudents();
+        students.sort(Comparator.comparing(Application::getDateOfFilling));
+        model.addAttribute("students", students);
+        return "/administrator/application/studentApplicationList";
     }
 
     @RequestMapping("/admin/changeApproved/{id}/true")

@@ -20,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @RequestMapping("/admin/student")
@@ -37,6 +38,7 @@ public class StudentWebController {
     @RequestMapping ("/list")
     public String list(Model model){
         List<Student> list = service.getAll();
+        list.sort(Comparator.comparing(Student::getFullName));
         model.addAttribute("students", list);
         return "administrator/student/studentList";
     }

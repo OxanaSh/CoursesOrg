@@ -27,7 +27,9 @@ public class StudentGroupWebController {
 
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("groups", service.getAll());
+        List<StudentGroup> list = service.getAll();
+        list.sort(Comparator.comparing(StudentGroup::getGroupNumber));
+        model.addAttribute("groups", list);
         return "administrator/studentGroup/groupList";
     }
 
