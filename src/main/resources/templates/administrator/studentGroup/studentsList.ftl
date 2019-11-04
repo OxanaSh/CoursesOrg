@@ -10,7 +10,7 @@
             </tr>
             </thead>
             <#list students as student>
-               <td>${student.getFullName}</td>
+               <td>${student.getFullName()}</td>
                 <td>
                     <!-- <a href="/admin/studentGroup/deleteFromGroup/{student.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> evict </a> -->
                 </td>
