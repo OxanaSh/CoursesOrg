@@ -2,6 +2,7 @@ package edu.shep.demo.forms;
 
 import edu.shep.demo.model.LessonForm;
 import edu.shep.demo.model.Occupation;
+import edu.shep.demo.model.Speciality;
 
 public class ApplicationForm{
         private String id;
@@ -10,9 +11,8 @@ public class ApplicationForm{
         private String patronymic;
         private String dateOfBirth;
         private String phoneNumber;
-        private String specialityCode;
-        private String SpecialityName;
-        private String specialityPayment;
+        private String username;
+        private Speciality speciality;
         private LessonForm formOfStudying;
         private boolean approval;
         private String dateOfFilling;
@@ -24,72 +24,75 @@ public class ApplicationForm{
 
     }
 
-    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String specialityCode, String specialityName, String speciaPayment, LessonForm formOfStudying, String dateOfFilling, Occupation whomWantToBe) {
+    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username, Speciality specialityName, LessonForm formOfStudying, String dateOfFilling, Occupation whomWantToBe) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
-        this.specialityCode = specialityCode;
-        SpecialityName = specialityName;
-        this.specialityPayment = speciaPayment;
+        speciality = specialityName;
         this.formOfStudying = formOfStudying;
         this.approval = false;
         this.dateOfFilling = dateOfFilling;
         this.enabled = true;
         this.whomWantToBe = whomWantToBe;
+        this.username = username;
     }
 
-    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String specialityCode, String specialityName, String speciaPayment, LessonForm formOfStudying, String dateOfFilling, Occupation whomWantToBe) {
+    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username,Speciality specialityName,  LessonForm formOfStudying, String dateOfFilling, Occupation whomWantToBe) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
-        this.specialityCode = specialityCode;
-        SpecialityName = specialityName;
-        this.specialityPayment = speciaPayment;
+        speciality = specialityName;
         this.formOfStudying = formOfStudying;
         this.approval = false;
         this.dateOfFilling = dateOfFilling;
         this.enabled = true;
         this.whomWantToBe = whomWantToBe;
+        this.username = username;
     }
 
-    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String specialityCode, String specialityName, String speciaPayment, LessonForm formOfStudying, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
+    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username,Speciality specialityName, LessonForm formOfStudying, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
-        this.specialityCode = specialityCode;
-        SpecialityName = specialityName;
-        this.specialityPayment = speciaPayment;
+        speciality = specialityName;
         this.formOfStudying = formOfStudying;
         this.approval = approval;
         this.dateOfFilling = dateOfFilling;
         this.enabled = enabled;
         this.whomWantToBe = whomWantToBe;
+        this.username = username;
     }
 
-    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String specialityCode, String specialityName, String speciaPayment, LessonForm formOfStudying, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
+    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username, Speciality specialityName, LessonForm formOfStudying, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
-        this.specialityCode = specialityCode;
-        SpecialityName = specialityName;
-        this.specialityPayment = speciaPayment;
+        speciality = specialityName;
         this.formOfStudying = formOfStudying;
         this.approval = approval;
         this.dateOfFilling = dateOfFilling;
         this.enabled = enabled;
         this.whomWantToBe = whomWantToBe;
+        this.username = username;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getId() {
         return id;
@@ -139,28 +142,12 @@ public class ApplicationForm{
         this.phoneNumber = phoneNumber;
     }
 
-    public String getSpecialityCode() {
-        return specialityCode;
+    public Speciality getSpeciality() {
+        return speciality;
     }
 
-    public void setSpecialityCode(String specialityCode) {
-        this.specialityCode = specialityCode;
-    }
-
-    public String getSpecialityName() {
-        return SpecialityName;
-    }
-
-    public void setSpecialityName(String specialityName) {
-        SpecialityName = specialityName;
-    }
-
-    public String getSpecialityPayment() {
-        return specialityPayment;
-    }
-
-    public void setSpecialityPayment(String specialityPayment) {
-        this.specialityPayment = specialityPayment;
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
     }
 
     public LessonForm getFormOfStudying() {

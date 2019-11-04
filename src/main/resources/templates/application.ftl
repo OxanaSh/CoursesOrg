@@ -1,34 +1,37 @@
-<#import "topPanel.ftl" as c/>
-<@c.page title="login">
+<#import "topPanel.ftl" as c>
+<#import "/spring.ftl" as spring/>
+<@c.page title="application">
+    <br/>
+    <div class="container" style="border: 2px solid black; padding: 20px 20px">
 
 
-
-<div class="row h-100 justify-content-center align-items-center" style="margin:auto; padding: 50px">
-    <form name="f" action="/login" method="POST" style="border: 2px solid black; padding: 20px 20px" class="rounded" >
-
-
-
-        <div class="form-group" >
-            <label for="exampleInputEmail1">Email address</label>
-            <input  name="username" type="text" class="form-control" placeholder="Enter email">
+    <legend>Enter your data</legend>
+        <form name="student" action="" method="POST">
+            <br>Name<@spring.formInput "applicationForm.name" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input name="password" type="password" class="form-control"  placeholder="Password">
+            <br>Surname<@spring.formInput "applicationForm.surname" "class='form-control'" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </div>
+            <br>Patronymic<@spring.formInput "applicationForm.patronymic" "class='form-control'" "text"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <br>Date of birth<@spring.formInput "applicationForm.dateOfBirth", "class='from-control' readonly" />
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <script>
+                $('#dateOfBirth').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+            <br>Phone number<@spring.formInput "applicationForm.phoneNumber" "class='form-control'" "text"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+             <br>email<@spring.formInput "applicationForm.username" "class='form-control'" "text"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <br>Speciality<@spring.formSingleSelect "applicationForm.speciality", specialities, "class='form-control'"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <br>Form of studying<@spring.formSingleSelect "applicationForm.formOfStudying", lessonForms, "class='form-control'"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <br/>Occupation<br><@spring.formRadioButtons "applicationForm.whomWantToBe", occupations, "<br>"/>
+            <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>
+        </form>
 
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+    </div>
 
-        <input name="submit" type="submit" class="btn btn-dark" value="submit"/>
-
-    </form>
-    <a ></a>
-</div>
 </@c.page>

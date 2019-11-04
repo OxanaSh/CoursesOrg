@@ -11,6 +11,7 @@ public class Application {
     @Id
     private String id;
     private Person person;
+    private String email;
     private Speciality speciality;
     private LessonForm formOfStudying;
     private boolean approval;
@@ -24,7 +25,7 @@ public class Application {
     }
 
 
-    public Application(String id, Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe, boolean enabled) {
+    public Application(String id, Person person,String email, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe, boolean enabled) {
         this.id = id;
         this.person = person;
         this.speciality = speciality;
@@ -33,9 +34,10 @@ public class Application {
         this.dateOfFilling = dateOfFilling;
         this.enabled = enabled;
         this.whomWantToBe = whomWantToBe;
+        this.email = email;
     }
 
-    public Application(Person person, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe) {
+    public Application(Person person, String email, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe) {
         this.person = person;
         this.speciality = speciality;
         this.formOfStudying = formOfStudying;
@@ -43,6 +45,7 @@ public class Application {
         this.dateOfFilling = dateOfFilling;
         this.enabled = true;
         this.whomWantToBe = whomWantToBe;
+        this.email = email;
     }
 
     public Occupation getWhomWantToBe() {
