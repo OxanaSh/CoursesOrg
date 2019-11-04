@@ -28,7 +28,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>Form of studying<@spring.formSingleSelect "applicationForm.formOfStudying", lessonForms, "class='form-control'"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Degree<@spring.formSingleSelect "applicationForm.formOfStudying", degrees, "class='form-control'"/>
+            <br>Degree<@spring.formSingleSelect "applicationForm.degree", degrees, "class='form-control'"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>Occupation<br><@spring.formRadioButtons "applicationForm.whomWantToBe", occupations, "<br>"/>
             <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>

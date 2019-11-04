@@ -47,7 +47,7 @@
     <div class="container-fluid">
         <br/>
     Don't have account?
-    <a href="/admin/application/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Send application to us</a>
+    <a href="/application/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Send application to us</a>
     </div>
 </div>
 </@c.page>

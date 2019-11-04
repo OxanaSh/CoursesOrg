@@ -52,7 +52,7 @@ public class ApplicationWebController {
         Application newApplication = new Application(newPerson, applicationForm.getUsername(), applicationForm.getSpeciality(), applicationForm.getFormOfStudying(),
                                            applicationForm.getDegree(), false, LocalDate.now(), applicationForm.getWhomWantToBe());
         applicationService.create(newApplication);
-        return "redirect:/application/";
+        return "redirect:/";
     }
 
     @RequestMapping("/admin/teacher/application")
