@@ -111,6 +111,7 @@ public class StudentGroupWebController {
     @RequestMapping("/{id}/studentsList")
     public String studentsList(Model model, @PathVariable("id")String id){
         model.addAttribute("students", service.get(id).getStudents());
+        model.addAttribute("studentGroup", service.get(id));
         return "administrator/studentGroup/studentsList";
     }
 
@@ -133,6 +134,13 @@ public class StudentGroupWebController {
     public String addStudents(Model model, @PathVariable("id") String id){
         StudentGroupForm groupForm = new StudentGroupForm();
         groupForm.setId(id);
+
+        List<String> studentsList = new ArrayList<>();
+        for(int i=0; i<service.get(id).getStudents().size(); i++){
+            studentsList.add(studentService.getAll().get(i).getId());
+        }
+        groupForm.setStudents(studentsList);
+
         Map<String, String> students = studentService.getAllByEnabledIsTrue().stream()
                 .collect(Collectors.toMap(Student::getId, Student::getFullName));
 
@@ -161,5 +169,28 @@ public class StudentGroupWebController {
         service.update(newGroup);
         return "redirect:/admin/studentGroup/list";
     }
+
+
+    @RequestMapping(value="/deleteStudent/{studentId}/fromGroup/{studentGroupId}")
+    public  String deleteStudentFormGroup(@PathVariable("studentId") String studentId, @PathVariable("studentGroupId") String studentGroupId){
+        List<Student> newStudents = new ArrayList<>();
+        //System.out.println(studentId);
+        for (Student student:service.get(studentGroupId).getStudents()
+             ) {
+            //System.out.println(student);
+            //System.out.println(student.getId() + "-------" + studentId);
+            if(!student.getId().equals(studentId)){
+                newStudents.add(student);
+               // System.out.println("ADDED student ----"+student);
+            }
+        }
+
+        StudentGroup newGroup = service.get(studentGroupId);
+        newGroup.setStudents(newStudents);
+        System.out.println(newStudents);
+        service.update(newGroup);
+        return "redirect:/admin/studentGroup/"+studentGroupId+"/studentsList";
+    }
+
 
 }

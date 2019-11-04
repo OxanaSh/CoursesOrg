@@ -1,5 +1,5 @@
 <#import "../administrationPanel.ftl" as c/>
-<@c.page title="subjects">
+<@c.page title="student group">
 
 <table class="table table-hover table-active table-bordered">
         <thead class="thead-dark">
@@ -31,7 +31,7 @@
                     <a class="btn" href="/admin/studentGroup/${group.id}/studentsList" role="button">
                     <img src="https://img.icons8.com/pastel-glyph/64/000000/create-new--v1.png" width="20" height="20">
                     </a>
-
+                    <a href="/admin/studentGroup/students/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">edit students list</a>
                 <#else >
                     there are no students
                     <a href="/admin/studentGroup/students/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">add students</a>
