@@ -18,14 +18,14 @@ public class Application {
     private LocalDate dateOfFilling;
     private boolean enabled;
     private Occupation whomWantToBe;
-
+    private Degree degree;
 
 
     public Application() {
     }
 
 
-    public Application(String id, Person person,String email, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe, boolean enabled) {
+    public Application(String id, Person person,String email, Speciality speciality, LessonForm formOfStudying, Degree degree, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe, boolean enabled) {
         this.id = id;
         this.person = person;
         this.speciality = speciality;
@@ -35,9 +35,10 @@ public class Application {
         this.enabled = enabled;
         this.whomWantToBe = whomWantToBe;
         this.email = email;
+        this.degree = degree;
     }
 
-    public Application(Person person, String email, Speciality speciality, LessonForm formOfStudying, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe) {
+    public Application(Person person, String email, Speciality speciality, LessonForm formOfStudying,Degree degree, boolean approval, LocalDate dateOfFilling, Occupation whomWantToBe) {
         this.person = person;
         this.speciality = speciality;
         this.formOfStudying = formOfStudying;
@@ -46,6 +47,23 @@ public class Application {
         this.enabled = true;
         this.whomWantToBe = whomWantToBe;
         this.email = email;
+        this.degree = degree;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Degree getDegree() {
+        return degree;
+    }
+
+    public void setDegree(Degree degree) {
+        this.degree = degree;
     }
 
     public Occupation getWhomWantToBe() {

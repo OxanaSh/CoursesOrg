@@ -1,6 +1,7 @@
 package edu.shep.demo.services.application.impls;
 
 import edu.shep.demo.model.Application;
+import edu.shep.demo.model.Occupation;
 import edu.shep.demo.repository.ApplicationRepository;
 import edu.shep.demo.services.application.interfaces.IApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,15 @@ import java.util.List;
 public class ApplicationServiceImpl implements IApplicationService {
     @Autowired
     ApplicationRepository repository;
+
+
+    public List<Application> getAllTeachers(){
+        return repository.findAllByWhomWantToBe(Occupation.TEACHER);
+    }
+
+    public List<Application> getAllStudents(){
+        return repository.findAllByWhomWantToBe(Occupation.STUDENT);
+    }
 
 
     @Override

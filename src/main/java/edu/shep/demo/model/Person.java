@@ -115,6 +115,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getFullName(){ return  surname+' '+name+' '+patronymic; }
 
     @Override
     public boolean equals(Object o) {

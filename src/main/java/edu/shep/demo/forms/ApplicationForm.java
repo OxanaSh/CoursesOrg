@@ -1,5 +1,6 @@
 package edu.shep.demo.forms;
 
+import edu.shep.demo.model.Degree;
 import edu.shep.demo.model.LessonForm;
 import edu.shep.demo.model.Occupation;
 import edu.shep.demo.model.Speciality;
@@ -18,13 +19,14 @@ public class ApplicationForm{
         private String dateOfFilling;
         private boolean enabled;
         private Occupation whomWantToBe;
+        private Degree degree;
 
 
     public ApplicationForm() {
 
     }
 
-    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username, Speciality specialityName, LessonForm formOfStudying, String dateOfFilling, Occupation whomWantToBe) {
+    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username, Speciality specialityName, LessonForm formOfStudying, Degree degree, String dateOfFilling, Occupation whomWantToBe) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -37,9 +39,10 @@ public class ApplicationForm{
         this.enabled = true;
         this.whomWantToBe = whomWantToBe;
         this.username = username;
+        this.degree = degree;
     }
 
-    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username,Speciality specialityName,  LessonForm formOfStudying, String dateOfFilling, Occupation whomWantToBe) {
+    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber, String username,Speciality specialityName,  LessonForm formOfStudying,Degree degree, String dateOfFilling, Occupation whomWantToBe) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -53,9 +56,10 @@ public class ApplicationForm{
         this.enabled = true;
         this.whomWantToBe = whomWantToBe;
         this.username = username;
+        this.degree = degree;
     }
 
-    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username,Speciality specialityName, LessonForm formOfStudying, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
+    public ApplicationForm(String id, String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username,Speciality specialityName, LessonForm formOfStudying,Degree degree, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -69,9 +73,10 @@ public class ApplicationForm{
         this.enabled = enabled;
         this.whomWantToBe = whomWantToBe;
         this.username = username;
+        this.degree = degree;
     }
 
-    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username, Speciality specialityName, LessonForm formOfStudying, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
+    public ApplicationForm(String name, String surname, String patronymic, String dateOfBirth, String phoneNumber,String username, Speciality specialityName, LessonForm formOfStudying,Degree degree, boolean approval, String dateOfFilling, boolean enabled, Occupation whomWantToBe) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -84,6 +89,15 @@ public class ApplicationForm{
         this.enabled = enabled;
         this.whomWantToBe = whomWantToBe;
         this.username = username;
+        this.degree = degree;
+    }
+
+    public Degree getDegree() {
+        return degree;
+    }
+
+    public void setDegree(Degree degree) {
+        this.degree = degree;
     }
 
     public String getUsername() {

@@ -9,55 +9,47 @@
             <th>Date of birth</th>
             <th>Email</th>
             <th>Phone number</th>
+            <th>Degree</th>
             <th>Is approved</th>
+            <th>Is Enabled</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
-        <#list groups as group>
+        <#list teachers as teacher>
             <tr>
-                <td>${group.groupNumber}</td>
-
-                <#if group.getSpeciality()?has_content>
-                     <td>${group.getSpeciality().name}</td>
-                 <#else >
-                    <td>object does not exist</td>
+                <td>${teacher.dateOfFilling}</td>
+                <td>${teacher.getPerson().getFullName()}</td>
+                <td>${teacher.person.getDateOfBirth()}</td>
+                <td>${teacher.email}</td>
+                <td>${teacher.person.getPhoneNumber()}</td>
+                <td>${teacher.degree}</td>
+                <#if teacher.approval == false && teacher.enabled == false>
+                    <td>Rejected</td>
+                    <#else>
+                    <td>
+                        <a class="btn" href="/admin/changeApproved/${teacher.id}/true" role="button">
+                            <img src="https://img.icons8.com/carbon-copy/64/000000/ok.png" width="50" height="50">
+                        </a>
+                        <a class="btn" href="/admin/changeApproved/${teacher.id}/false" role="button">
+                            <img src="https://img.icons8.com/carbon-copy/100/000000/cancel.png" width="50" height="50">
+                        </a>
+                    </td>
                 </#if>
 
-                <td>${group.formOfStudying}</td>
-                <td>
-                <#if group.getStudents()?has_content>
-                   ${group.getCurrentStudentsNumber()}
-                    <a class="btn" href="/admin/studentGroup/${group.id}/studentsList" role="button">
-                    <img src="https://img.icons8.com/pastel-glyph/64/000000/create-new--v1.png" width="20" height="20">
-                    </a>
-                    <a href="/admin/studentGroup/students/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">edit students list</a>
-                <#else >
-                    there are no students
-                    <a href="/admin/studentGroup/students/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">add students</a>
-
-                </#if>
-                </td>
-
-
-
-
-                <#if group.isEnabled()>
+                <#if teacher.isEnabled()>
                     <td>yes</td>
-                    <td><a href="/admin/studentGroup/delete/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
+                    <td><a href="/admin/teacher/delete/${teacher.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">disable</a></td>
                 <#else>
                     <td>no</td>
-                    <td><a href="/admin/studentGroup/delete/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
+                    <td><a href="/admin/teacher/delete/${teacher.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> enable </a></td>
                 </#if>
-
-
-                <td><a href="/admin/studentGroup/update/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
 
 
             </tr>
         </div>
         </#list>
     </table>
-    <a href="/admin/studentGroup/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student group</a>
+    <!--<a href="/admin/studentGroup/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student group</a>
 
 </@c.page>
