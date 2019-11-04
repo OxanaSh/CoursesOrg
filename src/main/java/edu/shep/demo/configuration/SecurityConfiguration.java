@@ -56,10 +56,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                 .headers().frameOptions().disable()
+                .and()
+                .exceptionHandling().accessDeniedPage("/login")
+                .and()
                 .authorizeRequests()
+                .regexMatchers("^\\S*.js|\\S*.css$").permitAll()
                 .antMatchers("/admin/**").permitAll()//hasAuthority("ADMIN")
-                .antMatchers("/readme.txt", "/css/*", "/", "/application").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/readme.txt", "/css/*", "/", "/images/**","/application").permitAll()
+                 //.anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()

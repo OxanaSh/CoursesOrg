@@ -1,4 +1,4 @@
-package edu.shep.demo.controllers.web;
+package edu.shep.demo.controllers.web.admin;
 
 import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
@@ -20,11 +20,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/admin/user")
 @Controller
 public class UserWebController {
-
     @Autowired
     UserService service;
     @Autowired
-    private PersonServiceImpl personService;
+    PersonServiceImpl personService;
 
 
     @RequestMapping("/list")

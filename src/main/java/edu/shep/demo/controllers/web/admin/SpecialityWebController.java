@@ -1,4 +1,4 @@
-package edu.shep.demo.controllers.web;
+package edu.shep.demo.controllers.web.admin;
 
 
 import edu.shep.demo.forms.SpecialityForm;

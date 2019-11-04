@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-  <!--  <link rel="icon" href="/images/icon.png" type="image/png" > -->
+    <link rel="icon" href="/images/catIcon.png" type="image/png" >
+    <link rel="stylesheet" type="text/css" href="/static/css/scheduleStyle.css">
    </head>
 <style>
     body {
@@ -90,7 +91,7 @@
 
 
 <div class="sidenav">
-    <a href="#" class="w3-bar-item w3-button w3-hover-white">Groups</a>
+    <a href="/admin/studentGroup/list" class="w3-bar-item w3-button w3-hover-white">Groups</a>
     <a href="/admin/speciality/list" class="w3-bar-item w3-button w3-hover-white">Specialities</a>
     <a href="/admin/subject/list" class="w3-bar-item w3-button w3-hover-white">Subjects</a>
    <!-- <a href="/admin/person/list" class="w3-bar-item w3-button w3-hover-white">Person</a> -->

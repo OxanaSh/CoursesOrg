@@ -1,6 +1,8 @@
 package edu.shep.demo.controllers.web;
 
 import edu.shep.demo.forms.ApplicationForm;
+import edu.shep.demo.model.LessonForm;
+import edu.shep.demo.model.Occupation;
 import edu.shep.demo.model.Role;
 import edu.shep.demo.model.User;
 import org.springframework.security.core.Authentication;
@@ -13,6 +15,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 
@@ -60,7 +66,12 @@ public class MainWebController {
     String application(Model model){
         ApplicationForm applicationForm = new ApplicationForm();
 
+        //Map<String, String> roles = Arrays.stream(Occupation.values()).collect(Collectors.toMap(Occupation::, Role::getAuthority));
 
+
+        model.addAttribute("lessonForm", LessonForm.values());
+        model.addAttribute("occupation", Occupation.values());
+        model.addAttribute("applicationForm", applicationForm);
         return "application";
     }
 

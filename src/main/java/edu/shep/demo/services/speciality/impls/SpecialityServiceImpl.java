@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -36,6 +37,12 @@ public class SpecialityServiceImpl implements ISpecialityService {
     public List<Speciality> findAllBySubjectsContains(Subject subject){
         return repository.findAllBySubjectsContains(subject);
     }
+
+    public List<Speciality> findAllByEnabledIsTrue(){
+        return repository.findAllByEnabledIsTrue();
+    }
+
+    public Speciality findByName(String name){return repository.findByName(name);}
 
     @Override
     public List<Speciality> getAll() {

@@ -73,6 +73,9 @@ public class StudentServiceImpl implements IStudentService {
 
     public Student findByPersonId(String id){return repository.findByPersonId(id);}
 
+    public List<Student> getAllByEnabledIsTrue(){return repository.getAllByEnabledIsTrue();}
+
+
     @Override
     public List<Student> getAll() {
         return repository.findAll();

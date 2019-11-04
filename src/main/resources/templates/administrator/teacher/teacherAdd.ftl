@@ -22,7 +22,7 @@
             <br>Degree:<@spring.formSingleSelect "teacherForm.degree", degrees, "class='from-control' readonly"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
-            <br>Date of starting work as a teacher:<@spring.formInput "teacherForm.experience", "class='from-control' readonly"/>
+            <br>Date of starting work as a teacher:<@spring.formInput "teacherForm.experience", "class='from-control'"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <script>
                 $('#experience').datepicker({

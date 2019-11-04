@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Document
 public class Lesson {
@@ -14,37 +13,57 @@ public class Lesson {
     private String id;
     private boolean wasHeld;
     private LocalDate date;
-    private Map<Student, Boolean> students;
-    private Subject subject;
+    private List<Student> presentStudents;
+    private String topic;
     private boolean enabled;
-
+    private Teacher teacher;
 
     public Lesson() {
     }
 
-    public Lesson(String id, boolean wasHeld, LocalDate date, Map<Student, Boolean> students, Subject subject, boolean enabled) {
-        this.id = id;
-        this.wasHeld = wasHeld;
-        this.date = date;
-        this.students = students;
-        this.subject = subject;
-        this.enabled = enabled;
-    }
-
-    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Boolean> students, Subject subject) {
-        this.wasHeld = wasHeld;
-        this.date = date;
-        this.students = students;
-        this.subject = subject;
+    public Lesson(String topic) {
+        this.topic = topic;
+        this.wasHeld = true;
+        this.date = LocalDate.now();
+        this.presentStudents = null;
+        this.teacher = null;
         this.enabled = true;
     }
 
-    public Lesson(boolean wasHeld, LocalDate date, Map<Student, Boolean> students, Subject subject, boolean enabled) {
+    public Lesson(String id, boolean wasHeld, LocalDate date, List<Student> students, Teacher teacher, String topic, boolean enabled) {
+        this.id = id;
         this.wasHeld = wasHeld;
         this.date = date;
-        this.students = students;
-        this.subject = subject;
+        this.presentStudents = students;
+        this.teacher = teacher;
         this.enabled = enabled;
+        this.topic = topic;
+    }
+
+    public Lesson(boolean wasHeld, LocalDate date, List<Student> students,String topic, Teacher teacher) {
+        this.wasHeld = wasHeld;
+        this.date = date;
+        this.presentStudents = students;
+        this.teacher = teacher;
+        this.topic = topic;
+        this.enabled = true;
+    }
+
+    public Lesson(boolean wasHeld, LocalDate date, List<Student> students, Teacher teacher,String topic, boolean enabled) {
+        this.wasHeld = wasHeld;
+        this.date = date;
+        this.presentStudents = students;
+        this.teacher = teacher;
+        this.topic = topic;
+        this.enabled = enabled;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public boolean isEnabled() {
@@ -55,12 +74,12 @@ public class Lesson {
         this.enabled = enabled;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public String getId() {
@@ -87,23 +106,12 @@ public class Lesson {
         this.date = date;
     }
 
-    public Map<Student, Boolean> getStudents() {
-        return students;
+    public List<Student> getPresentStudents() {
+        return presentStudents;
     }
 
-    public void setStudents(Map<Student, Boolean> students) {
-        this.students = students;
+    public void setPresentStudents(List<Student> presentStudents) {
+        this.presentStudents = presentStudents;
     }
 
-    @Override
-    public String toString() {
-        return "Lesson{" +
-                "id='" + id + '\'' +
-                ", wasHeld=" + wasHeld +
-                ", date=" + date +
-                ", students=" + students +
-                ", subject=" + subject +
-                ", enabled=" + enabled +
-                '}';
-    }
 }

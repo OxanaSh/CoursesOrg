@@ -56,6 +56,6 @@
             </tr>
         </#list>
     </table>
-    <a href="/admin/teacher/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new student</a>
+    <a href="/admin/teacher/create" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add new teacher</a>
 
 </@c.page>

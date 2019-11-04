@@ -20,8 +20,7 @@
             <@spring.formCheckboxes "specialityForm.subjects", mavs "<br>"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <@spring.formMultiSelect "specialityForm.subjects", mavs, "<br>"/>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
             <br/>
             <input type="submit" class="btn btn-secondary btn-lg active" value="Create"/>
         </form>

@@ -35,6 +35,8 @@ public class Student {
         this.enabled = true;
     }
 
+    public String getFullName(){return  person.getSurname()+' '+person.getName()+' '+person.getPatronymic();}
+
     public User getUser() {
         return user;
     }

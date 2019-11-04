@@ -1,5 +1,6 @@
 package edu.shep.demo.services.studentGroup.impls;
 
+import edu.shep.demo.model.Student;
 import edu.shep.demo.model.StudentGroup;
 import edu.shep.demo.repository.StudentGroupRepository;
 import edu.shep.demo.services.studentGroup.interfaces.IStudentGroupService;
@@ -12,6 +13,11 @@ import java.util.List;
 public class StudentGroupServiceImpl implements IStudentGroupService {
     @Autowired
     StudentGroupRepository repository;
+
+
+  //  public StudentGroup findStudentGroupByStudentId(Student student){
+    //    return repository.findStudentGroupByStudentsContain(student);
+  //  }
 
     @Override
     public List<StudentGroup> getAll() {

@@ -11,4 +11,7 @@ import java.util.List;
 @Repository
 public interface SpecialityRepository extends MongoRepository<Speciality, String> {
     List<Speciality> findAllBySubjectsContains(Subject subject);
+    List<Speciality> findAllByEnabledIsTrue();
+   // List<Speciality> findAllByEnabledIsTrueAndOrderByName();
+    Speciality findByName(String name);
 }

@@ -16,27 +16,59 @@ public class StudentGroup {
     private List <Student> students;
     private Schedule schedule;
     private boolean enabled;
-
+    private int maxStudentsNumber;
 
     public StudentGroup() {
     }
 
-    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule) {
-        this.groupNumber = groupNumber;
-        this.formOfStudying = formOfStudying;
-        this.speciality = speciality;
-        this.students = students;
-        this.schedule = schedule;
-        this.enabled = true;
-    }
-
-    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule, boolean enabled) {
+    public StudentGroup(String id, String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule, int maxStudentsNumber, boolean enabled) {
+        this.id = id;
         this.groupNumber = groupNumber;
         this.formOfStudying = formOfStudying;
         this.speciality = speciality;
         this.students = students;
         this.schedule = schedule;
         this.enabled = enabled;
+        this.maxStudentsNumber = maxStudentsNumber;
+    }
+
+    public StudentGroup(String id, String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule, int maxStudentsNumber) {
+        this.id = id;
+        this.groupNumber = groupNumber;
+        this.formOfStudying = formOfStudying;
+        this.speciality = speciality;
+        this.students = students;
+        this.schedule = schedule;
+        this.enabled = true;
+        this.maxStudentsNumber = maxStudentsNumber;
+    }
+
+    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule, int maxStudentsNumber) {
+        this.groupNumber = groupNumber;
+        this.formOfStudying = formOfStudying;
+        this.speciality = speciality;
+        this.students = students;
+        this.schedule = schedule;
+        this.enabled = true;
+        this.maxStudentsNumber = maxStudentsNumber;
+    }
+
+    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, List<Student> students, Schedule schedule, boolean enabled, int maxStudentsNumber) {
+        this.groupNumber = groupNumber;
+        this.formOfStudying = formOfStudying;
+        this.speciality = speciality;
+        this.students = students;
+        this.schedule = schedule;
+        this.enabled = enabled;
+        this.maxStudentsNumber = maxStudentsNumber;
+    }
+
+    public StudentGroup(String groupNumber, LessonForm formOfStudying, Speciality speciality, int maxStudentsNumber) {
+        this.groupNumber = groupNumber;
+        this.formOfStudying = formOfStudying;
+        this.speciality = speciality;
+        this.maxStudentsNumber = maxStudentsNumber;
+        this.enabled = true;
     }
 
     public boolean isEnabled() {
@@ -79,6 +111,9 @@ public class StudentGroup {
         this.groupNumber = groupNumber;
     }
 
+    public String getCurrentStudentsNumber(){return Integer.toString(this.students.size()); }
+
+
     public LessonForm getFormOfStudying() {
         return formOfStudying;
     }
@@ -95,6 +130,13 @@ public class StudentGroup {
         this.speciality = speciality;
     }
 
+    public int getMaxStudentsNumber() {
+        return maxStudentsNumber;
+    }
+
+    public void setMaxStudentsNumber(int maxStudentsNumber) {
+        this.maxStudentsNumber = maxStudentsNumber;
+    }
 
     @Override
     public String toString() {
@@ -105,6 +147,8 @@ public class StudentGroup {
                 ", speciality=" + speciality +
                 ", students=" + students +
                 ", schedule=" + schedule +
+                ", enabled=" + enabled +
+                ", maxStudentsNumber=" + maxStudentsNumber +
                 '}';
     }
 }
