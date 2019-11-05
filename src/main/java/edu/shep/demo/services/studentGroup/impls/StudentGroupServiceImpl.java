@@ -35,6 +35,12 @@ public class StudentGroupServiceImpl implements IStudentGroupService {
         return finalGroup;
     }
 
+    public StudentGroup findByGroupNumber(String groupNumber){
+        System.out.println("!!!!!!!!!!!!"+repository.findByGroupNumber(groupNumber));
+        System.out.println("!!!!!!!!!!!!"+repository.findStudentGroupByGroupNumber(groupNumber));
+        return repository.findStudentGroupByGroupNumber(groupNumber);
+    }
+
     @Override
     public List<StudentGroup> getAll() {
         return repository.findAll();

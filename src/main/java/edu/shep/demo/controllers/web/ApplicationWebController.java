@@ -13,6 +13,7 @@ import edu.shep.demo.services.student.impls.StudentServiceImpl;
 import edu.shep.demo.services.studentGroup.impls.StudentGroupServiceImpl;
 import edu.shep.demo.services.teacher.impls.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -112,7 +113,7 @@ public class ApplicationWebController {
                 .collect(Collectors.toMap(StudentGroup::getId, StudentGroup::getGroupNumber));
 
         StudentGroupForm groupForm = new StudentGroupForm();
-
+        System.out.println("StudentForm in GET " + studentForm.toString());
         model.addAttribute("groupForm", groupForm);
         model.addAttribute("groups",groups);
         model.addAttribute("studentForm", studentForm);
@@ -120,10 +121,39 @@ public class ApplicationWebController {
     }
 
     @RequestMapping(value="/admin/student/application/{id}/createStudent", method = RequestMethod.POST)
-    public String createStudent(StudentForm studentForm, @PathVariable("id") String applicationId){
+    public String createStudent(@ModelAttribute("studentForm") StudentForm studentForm,
+                                @ModelAttribute("groupForm") StudentGroupForm groupForm, @PathVariable("id") String applicationId){
+        System.out.println("StudentForm in POST" + studentForm.toString());
+        System.out.println("DATE " + studentForm.getDateOfBirth());
+
+        System.out.println("Group nubmer in form " +groupForm.getGroupNumber());
+
+        Application newApplication = applicationService.get(applicationId);
+
+        Person newPerson = newApplication.getPerson();
+
+        System.out.println("POST was called");
+
+        User newUser = new User (newApplication.getEmail(),
+                new BCryptPasswordEncoder().encode(studentForm.getPassword()),
+                new ArrayList<>(Arrays.asList(Role.USER_STUDENT)));
+
+        Student newStudent = new Student(newPerson, newUser, true);
+
+        StudentGroup newGroup = studentGroupService.get(groupForm.getGroupNumber());
+        newGroup.getStudents().add(newStudent);
+
+        personService.create(newPerson);
+        userService.create(newUser);
+        studentService.create(newStudent);
+        studentGroupService.update(newGroup);
 
 
-    return "";
+        boolean approved = true;
+        newApplication.setApproval(approved);
+        newApplication.setEnabled(false);
+        applicationService.update(newApplication);
+    return "redirect:/admin/student/application";
     }
 
 

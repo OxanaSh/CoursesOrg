@@ -25,7 +25,7 @@
                 <td>${student.speciality.getName()}</td>
                 <#if student.approval == false && student.enabled == false>
                     <td><p class="text-danger">Rejected</p></td>
-                    <#elseif student.approval == true && student.enabled == true>
+                    <#elseif student.approval == true && student.enabled == false>
                         <td><p class="text-success">Approved</p></td>
                     <#else>
                     <td>

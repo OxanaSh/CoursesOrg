@@ -13,4 +13,6 @@ import java.util.List;
 public interface StudentGroupRepository  extends MongoRepository<StudentGroup, String> {
    // StudentGroup findStudentGroupByStudentsContain(Student student);
     List<StudentGroup> findAllBySpeciality_NameAndEnabledIsTrueAndFormOfStudying(String name, LessonForm lessonForm);
+    StudentGroup findByGroupNumber(String groupNumber);
+    StudentGroup findStudentGroupByGroupNumber(String groupNumber);
   }
