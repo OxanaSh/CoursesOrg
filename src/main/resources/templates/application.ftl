@@ -7,11 +7,11 @@
 
     <legend>Enter your data</legend>
         <form name="student" action="" method="POST">
-            <br>Name<@spring.formInput "applicationForm.name" "class='form-control'" "text"/>
+            <br>Name<@spring.formInput "applicationForm.name" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Surname<@spring.formInput "applicationForm.surname" "class='form-control'" "text"/>
+            <br>Surname<@spring.formInput "applicationForm.surname" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Patronymic<@spring.formInput "applicationForm.patronymic" "class='form-control'" "text"/>
+            <br>Patronymic<@spring.formInput "applicationForm.patronymic" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>Date of birth<@spring.formInput "applicationForm.dateOfBirth", "class='from-control' readonly" />
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -20,9 +20,9 @@
                     uiLibrary: 'bootstrap4'
                 });
             </script>
-            <br>Phone number<@spring.formInput "applicationForm.phoneNumber" "class='form-control'" "text"/>
+            <br>Phone number<@spring.formInput "applicationForm.phoneNumber" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-             <br>email<@spring.formInput "applicationForm.username" "class='form-control'" "text"/>
+             <br>email<@spring.formInput "applicationForm.username" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>Speciality<@spring.formSingleSelect "applicationForm.speciality", specialities, "class='form-control'"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
