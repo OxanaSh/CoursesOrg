@@ -66,6 +66,18 @@ public class TeacherForm {
         this.subjects = subjects;
     }
 
+    public TeacherForm(Person person, String username, String password) {
+        this.name = person.getName();
+        this.surname = person.getSurname();
+        this.patronymic = person.getPatronymic();
+        this.dateOfBirth = person.getDateOfBirth().toString();
+        this.phoneNumber = person.getPhoneNumber();
+        this.username = username;
+        this.password = password;
+        this.enabled = true;
+    }
+
+
     public List <String> getSubjects() {
         return subjects;
     }

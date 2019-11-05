@@ -66,6 +66,11 @@ public class StudentServiceImpl implements IStudentService {
 
     }
 
+    public Student findByUserId(String userId){
+
+        return repository.findByUserId(userId);
+    }
+
     //check
    // public List<Student> getAllByGroupId(){return repository.getAllByGroup_IdOrderByPersonAsc();}
 

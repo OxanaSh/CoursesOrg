@@ -28,6 +28,11 @@
             <#if role == "ADMIN">
             <div class="container"><a href="/admin/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Administrator menu</a>
             </div></#if>
+            <#if role == "USER_STUDENT">
+            <div class="container">
+                <a href="/student/user/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Student menu</a>
+            </div>
+            </#if>
         </#list>
 
         <form action="/logout" method="POST">

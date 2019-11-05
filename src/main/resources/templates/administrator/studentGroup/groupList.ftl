@@ -8,8 +8,9 @@
             <th>Speciality</th>
             <th>Form of studying</th>
             <th>Students</th>
-            <th>Is enabled</th>
             <th></th>
+            <th></th>
+            <th>Is enabled</th>
             <th></th>
             <th></th>
         </tr>
@@ -25,20 +26,29 @@
                 </#if>
 
                 <td>${group.formOfStudying}</td>
-                <td>
+
                 <#if group.getStudents()?has_content>
-                   ${group.getCurrentStudentsNumber()}
+                <td> ${group.getCurrentStudentsNumber()}/${group.getMaxStudentsNumber()} </td>
+                 <td>
                     <a class="btn" href="/admin/studentGroup/${group.id}/studentsList" role="button">
-                    <img src="https://img.icons8.com/pastel-glyph/64/000000/create-new--v1.png" width="20" height="20">
+                        <img src="https://img.icons8.com/metro/104/000000/user-male.png" width="20" height="20">
                     </a>
-                    <a href="/admin/studentGroup/students/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">edit students list</a>
-                <#else >
-                    there are no students
-                    <a href="/admin/studentGroup/students/${group.id}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">add students</a>
-
+                 </td>
+                      <#else >
+                <td>there are no students</td>
+                          <td>
+                              <a class="btn disabled" href="/admin/studentGroup/${group.id}/studentsList" role="button" tabindex="-1" aria-disabled="true">
+                                  <img src="https://img.icons8.com/metro/104/000000/user-male.png" width="20" height="20">
+                              </a>
+                          </td>
                 </#if>
-                </td>
 
+
+                <td>
+                   <a class="btn" href="/admin/studentGroup/students/${group.id}" role="button">
+                        <img src="https://img.icons8.com/pastel-glyph/64/000000/create-new--v1.png" width="20" height="20">
+                    </a>
+                </td>
 
 
 

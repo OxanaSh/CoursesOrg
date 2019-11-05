@@ -25,7 +25,7 @@
                 <td>${teacher.degree}</td>
                 <#if teacher.approval == false && teacher.enabled == false>
                     <td><p class="text-danger">Rejected</p></td>
-                    <#elseif teacher.approval == true && teacher.enabled == true>
+                    <#elseif teacher.approval == true && teacher.enabled == false>
                         <td><p class="text-success">Approved</p></td>
                     <#else>
                     <td>

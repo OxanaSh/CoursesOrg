@@ -4,6 +4,7 @@ package edu.shep.demo.controllers.web;
 import edu.shep.demo.forms.ApplicationForm;
 import edu.shep.demo.forms.StudentForm;
 import edu.shep.demo.forms.StudentGroupForm;
+import edu.shep.demo.forms.TeacherForm;
 import edu.shep.demo.model.*;
 import edu.shep.demo.services.application.impls.ApplicationServiceImpl;
 import edu.shep.demo.services.config.UserService;
@@ -11,6 +12,7 @@ import edu.shep.demo.services.person.impls.PersonServiceImpl;
 import edu.shep.demo.services.speciality.impls.SpecialityServiceImpl;
 import edu.shep.demo.services.student.impls.StudentServiceImpl;
 import edu.shep.demo.services.studentGroup.impls.StudentGroupServiceImpl;
+import edu.shep.demo.services.subject.impls.SubjectServiceImpl;
 import edu.shep.demo.services.teacher.impls.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,6 +43,11 @@ public class ApplicationWebController {
     TeacherServiceImpl teacherService;
     @Autowired
     PersonServiceImpl personService;
+    @Autowired
+    SubjectServiceImpl subjectService;
+
+
+    /*CREATE APPLICATION*/
 
     @RequestMapping(value = "/application/", method = RequestMethod.GET)
     public String application(Model model){
@@ -74,10 +81,12 @@ public class ApplicationWebController {
         return "redirect:/";
     }
 
+    /*SHOW APPLICATION LIST*/
+
     @RequestMapping("/admin/teacher/application")
     public String teacherApplication(Model model){
         List<Application> teachers = applicationService.getAllTeachers();
-        teachers.sort(Comparator.comparing(Application::getDateOfFilling));
+        teachers.sort(Comparator.comparing(Application::getDateOfFilling).reversed());
         model.addAttribute("teachers", teachers);
         return "/administrator/application/teacherApplicationList";
     }
@@ -93,16 +102,11 @@ public class ApplicationWebController {
     @RequestMapping("/admin/changeApproved/{id}/true")
     public String changeApprovedTrue(@PathVariable("id") String id) {
         Application newApplication = applicationService.get(id);
-        //boolean approved = true;
-       // newApplication.setApproval(approved);
-       // newApplication.setEnabled(false);
-       // applicationService.update(newApplication);
-
-
-
-        if (newApplication.getWhomWantToBe() == Occupation.TEACHER) return "redirect:/admin/teacher/application";
+        if (newApplication.getWhomWantToBe() == Occupation.TEACHER) return "redirect:/admin/teacher/application/"+id+"/createTeacher";
         else return "redirect:/admin/student/application/"+id+"/createStudent";
     }
+
+    /*CREATE STUDENT FROM APPLICATION*/
 
     @RequestMapping(value="/admin/student/application/{id}/createStudent", method = RequestMethod.GET)
     public String createStudent(Model model, @PathVariable("id") String applicationId){
@@ -123,16 +127,11 @@ public class ApplicationWebController {
     @RequestMapping(value="/admin/student/application/{id}/createStudent", method = RequestMethod.POST)
     public String createStudent(@ModelAttribute("studentForm") StudentForm studentForm,
                                 @ModelAttribute("groupForm") StudentGroupForm groupForm, @PathVariable("id") String applicationId){
-        System.out.println("StudentForm in POST" + studentForm.toString());
-        System.out.println("DATE " + studentForm.getDateOfBirth());
-
-        System.out.println("Group nubmer in form " +groupForm.getGroupNumber());
 
         Application newApplication = applicationService.get(applicationId);
 
         Person newPerson = newApplication.getPerson();
 
-        System.out.println("POST was called");
 
         User newUser = new User (newApplication.getEmail(),
                 new BCryptPasswordEncoder().encode(studentForm.getPassword()),
@@ -156,6 +155,50 @@ public class ApplicationWebController {
     return "redirect:/admin/student/application";
     }
 
+    /*CREATE TEACHER FROM APPLICATION*/
+
+    @RequestMapping(value="/admin/teacher/application/{id}/createTeacher", method = RequestMethod.GET)
+    public String createTeacher(Model model, @PathVariable("id") String applicationId){
+        Application application = applicationService.get(applicationId);
+        TeacherForm teacherForm = new TeacherForm(application.getPerson(), application.getEmail(),"");
+
+        List degrees = Arrays.asList(Degree.values());
+
+        Map<String, String> subjects = subjectService.getAll().stream()
+                .collect(Collectors.toMap(Subject::getId, Subject::getName));
+
+        model.addAttribute("subjects", subjects);
+        model.addAttribute("degrees", degrees);
+        model.addAttribute("teacherForm", teacherForm);
+        return "administrator/application/createTeacher";
+    }
+
+    @RequestMapping(value = "/admin/teacher/application/{id}/createTeacher", method = RequestMethod.POST)
+    public String create(@PathVariable("id") String applicationId, @ModelAttribute("teacherForm") TeacherForm teacherForm){
+        Application newApplication = applicationService.get(applicationId);
+        List<Subject> newSubjects = new ArrayList<>();
+        for (String id:teacherForm.getSubjects()) {
+            newSubjects.add(subjectService.get(id));
+        }
+
+        Person newPerson = applicationService.get(applicationId).getPerson();
+        User newUser = new User (applicationService.get(applicationId).getEmail(),
+                new BCryptPasswordEncoder().encode(teacherForm.getPassword()),
+                new ArrayList<>(Arrays.asList(Role.USER_TEACHER)));
+        Teacher newTeacher = new Teacher(newPerson, newUser, teacherForm.getDegree(),
+                LocalDate.parse(teacherForm.getExperience(), DateTimeFormatter.ofPattern("MM/dd/yyyy")),
+                newSubjects);
+
+        personService.create(newPerson);
+        userService.create(newUser);
+        teacherService.create(newTeacher);
+
+        boolean approved = true;
+        newApplication.setApproval(approved);
+        newApplication.setEnabled(false);
+        applicationService.update(newApplication);
+        return "redirect:/admin/teacher/application";
+    }
 
 
     @RequestMapping("/admin/changeApproved/{id}/false")

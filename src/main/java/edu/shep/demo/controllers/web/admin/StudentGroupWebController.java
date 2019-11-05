@@ -136,13 +136,13 @@ public class StudentGroupWebController {
     public String addStudents(Model model, @PathVariable("id") String id){
         StudentGroupForm groupForm = new StudentGroupForm();
         groupForm.setId(id);
-
-
         List<String> studentsList = new ArrayList<>();
+
+
         if(service.get(id).getStudents()!=null){
-                for(int i=0; i<service.get(id).getStudents().size(); i++){
-            studentsList.add(studentService.getAll().get(i).getId());
-                }
+            for (Student student:service.get(id).getStudents()) {
+                studentsList.add(student.getId());
+            }
         }
         else studentsList = null;
         groupForm.setStudents(studentsList);
@@ -157,8 +157,7 @@ public class StudentGroupWebController {
     }
 
     @RequestMapping(value = "/students/{id}", method = RequestMethod.POST)
-    public String addStudents(@ModelAttribute("groupForm") StudentGroupForm groupForm, @PathVariable("id") String id
-                              ){
+    public String addStudents(@ModelAttribute("groupForm") StudentGroupForm groupForm, @PathVariable("id") String id){
         System.out.println(groupForm.getId());
 
         List <Student> newStudents = new ArrayList<>();
@@ -166,7 +165,6 @@ public class StudentGroupWebController {
         {
             newStudents.add(studentService.get(groupForm.getStudents().get(i)));
         }
-
 
         System.out.println(groupForm.getId());
         StudentGroup newGroup = service.get(groupForm.getId());
@@ -180,20 +178,13 @@ public class StudentGroupWebController {
     @RequestMapping(value="/deleteStudent/{studentId}/fromGroup/{studentGroupId}")
     public  String deleteStudentFormGroup(@PathVariable("studentId") String studentId, @PathVariable("studentGroupId") String studentGroupId){
         List<Student> newStudents = new ArrayList<>();
-        //System.out.println(studentId);
-        for (Student student:service.get(studentGroupId).getStudents()
-             ) {
-            //System.out.println(student);
-            //System.out.println(student.getId() + "-------" + studentId);
-            if(!student.getId().equals(studentId)){
+        for (Student student:service.get(studentGroupId).getStudents()) {
+           if(!student.getId().equals(studentId)){
                 newStudents.add(student);
-               // System.out.println("ADDED student ----"+student);
-            }
+           }
         }
-
         StudentGroup newGroup = service.get(studentGroupId);
         newGroup.setStudents(newStudents);
-        System.out.println(newStudents);
         service.update(newGroup);
         return "redirect:/admin/studentGroup/"+studentGroupId+"/studentsList";
     }

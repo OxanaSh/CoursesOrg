@@ -22,6 +22,25 @@ public class StudentGroupServiceImpl implements IStudentGroupService {
     //    return repository.findStudentGroupByStudentsContain(student);
   //  }
 
+    public StudentGroup findByStudentId(String id){
+        List<StudentGroup> groups= repository.findAll();
+        StudentGroup returnGroup = new StudentGroup();
+        for (StudentGroup group:groups) {
+           if(group.getStudents()!=null) {
+               for (Student student : group.getStudents()) {
+                   System.out.println(student.getId() + "  " + id);
+                   if (student.getId().equals(id)) {
+                       returnGroup = group;
+                       System.out.println(returnGroup);
+                       break;
+                   }
+               }
+           }
+        }
+        System.out.println("RESULT RETURN GROUP " + returnGroup);
+        return returnGroup;
+    }
+
     public List<StudentGroup> findAllBySpeciality_Name(String name, LessonForm lessonForm){
         List<StudentGroup> groups = repository.findAllBySpeciality_NameAndEnabledIsTrueAndFormOfStudying(name, lessonForm);
         List<StudentGroup> finalGroup = new ArrayList<>();

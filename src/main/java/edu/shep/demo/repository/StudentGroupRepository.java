@@ -15,4 +15,5 @@ public interface StudentGroupRepository  extends MongoRepository<StudentGroup, S
     List<StudentGroup> findAllBySpeciality_NameAndEnabledIsTrueAndFormOfStudying(String name, LessonForm lessonForm);
     StudentGroup findByGroupNumber(String groupNumber);
     StudentGroup findStudentGroupByGroupNumber(String groupNumber);
+
   }

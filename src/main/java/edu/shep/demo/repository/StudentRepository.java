@@ -15,4 +15,5 @@ public interface StudentRepository  extends MongoRepository<Student, String> {
     boolean existsByEnabledIsTrueAndUserId(String userId);
     Student findByPersonId(String id);
     List<Student> getAllByEnabledIsTrue();
+    Student findByUserId(String userId);
 }

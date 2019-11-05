@@ -28,7 +28,9 @@ public class UserWebController {
 
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("users", service.getAll());
+        List<User> users= service.getAll();
+        users.sort(Comparator.comparing(User::getUsername));
+        model.addAttribute("users", users);
         return "administrator/user/userList";
     }
 

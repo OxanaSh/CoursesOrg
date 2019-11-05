@@ -6,13 +6,13 @@
 
     <legend>Add speciality</legend>
         <form name="speciality" action="" method="POST">
-            <br>Name:<@spring.formInput "specialityForm.name" "class='form-control'" "text"/>
+            <br>Name:<@spring.formInput "specialityForm.name" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>Code:<@spring.formInput "specialityForm.code" "class='form-control'" "text"/>
+            <br>Code:<@spring.formInput "specialityForm.code" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>Payment:<@spring.formInput "specialityForm.payment" "class='form-control'" "text"/>
+            <br>Payment:<@spring.formInput "specialityForm.payment" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <br>

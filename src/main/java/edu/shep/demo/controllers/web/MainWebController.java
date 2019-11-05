@@ -43,9 +43,7 @@ public class MainWebController {
         model.addAttribute("roles", user.getAuthorities());//user.getAuthorities().stream().map(Role::getAuthority).collect(joining(","))
         }
 
-
-
-    model.addAttribute("isAuthenticated", isAuthenticated);
+        model.addAttribute("isAuthenticated", isAuthenticated);
 
            return "index";
     }
