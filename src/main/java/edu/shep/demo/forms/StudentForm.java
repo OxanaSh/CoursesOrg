@@ -13,6 +13,7 @@ public class StudentForm {
     private String password;
     private boolean enabled;
 
+
     public StudentForm() {
     }
 
@@ -33,6 +34,17 @@ public class StudentForm {
         this.patronymic = patronymic;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.enabled = true;
+    }
+
+    public StudentForm(Person person, String username, String password) {
+        this.name = person.getName();
+        this.surname = person.getSurname();
+        this.patronymic = person.getPatronymic();
+        this.dateOfBirth = person.getDateOfBirth().toString();
+        this.phoneNumber = person.getPhoneNumber();
         this.username = username;
         this.password = password;
         this.enabled = true;

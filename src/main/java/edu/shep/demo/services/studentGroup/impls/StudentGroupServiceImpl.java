@@ -1,5 +1,6 @@
 package edu.shep.demo.services.studentGroup.impls;
 
+import edu.shep.demo.model.LessonForm;
 import edu.shep.demo.model.Student;
 import edu.shep.demo.model.StudentGroup;
 import edu.shep.demo.repository.StudentGroupRepository;
@@ -7,6 +8,8 @@ import edu.shep.demo.services.studentGroup.interfaces.IStudentGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -18,6 +21,19 @@ public class StudentGroupServiceImpl implements IStudentGroupService {
   //  public StudentGroup findStudentGroupByStudentId(Student student){
     //    return repository.findStudentGroupByStudentsContain(student);
   //  }
+
+    public List<StudentGroup> findAllBySpeciality_Name(String name, LessonForm lessonForm){
+        List<StudentGroup> groups = repository.findAllBySpeciality_NameAndEnabledIsTrueAndFormOfStudying(name, lessonForm);
+        List<StudentGroup> finalGroup = new ArrayList<>();
+        for (StudentGroup group:groups) {
+            if(group.getStudents()!=null){
+                if(group.getMaxStudentsNumber()>group.getStudents().size()){ finalGroup.add(group);}
+            }
+            else {finalGroup.add(group);}
+        }
+        finalGroup.sort(Comparator.comparing(StudentGroup::getGroupNumber));
+        return finalGroup;
+    }
 
     @Override
     public List<StudentGroup> getAll() {

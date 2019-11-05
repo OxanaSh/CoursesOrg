@@ -137,10 +137,14 @@ public class StudentGroupWebController {
         StudentGroupForm groupForm = new StudentGroupForm();
         groupForm.setId(id);
 
+
         List<String> studentsList = new ArrayList<>();
-        for(int i=0; i<service.get(id).getStudents().size(); i++){
+        if(service.get(id).getStudents()!=null){
+                for(int i=0; i<service.get(id).getStudents().size(); i++){
             studentsList.add(studentService.getAll().get(i).getId());
+                }
         }
+        else studentsList = null;
         groupForm.setStudents(studentsList);
 
         Map<String, String> students = studentService.getAllByEnabledIsTrue().stream()
