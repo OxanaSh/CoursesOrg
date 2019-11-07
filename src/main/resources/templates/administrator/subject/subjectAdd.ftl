@@ -5,10 +5,10 @@
    <legend>Add subject</legend>
         <form name="subject" action="" method="POST">
 
-            <br>Name:<@spring.formInput "subjectForm.name" "class='form-control'" "text"/>
+            <br>Name:<@spring.formInput "subjectForm.name" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>Hours:<@spring.formInput "subjectForm.hours" "class='form-control'" "text"/>
+            <br>Hours:<@spring.formInput "subjectForm.hours" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
 

@@ -1,6 +1,6 @@
 <#import "studentPanel.ftl" as c/>
 <@c.page title="administrator">
-
+<#if speciality?has_content>
     <table class="table table-hover table-active table-bordered">
         <thead class="thead-dark">
         <tr>
@@ -19,5 +19,7 @@
             </tr>
         </#list>
     </table>
-
+<#else >
+    You have no speciality fo current moment
+</#if>
 </@c.page>

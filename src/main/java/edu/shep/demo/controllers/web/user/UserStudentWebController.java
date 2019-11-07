@@ -1,9 +1,6 @@
 package edu.shep.demo.controllers.web.user;
 
-import edu.shep.demo.model.Student;
-import edu.shep.demo.model.StudentGroup;
-import edu.shep.demo.model.Subject;
-import edu.shep.demo.model.User;
+import edu.shep.demo.model.*;
 import edu.shep.demo.services.config.UserService;
 import edu.shep.demo.services.student.impls.StudentServiceImpl;
 import edu.shep.demo.services.studentGroup.impls.StudentGroupServiceImpl;
@@ -43,11 +40,15 @@ public class UserStudentWebController {
         if(isAuthenticated){
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             User user = (User) authentication.getPrincipal();
+            StudentGroup group;
+            if(studentService.findByUserId(user.getId())!=null){
             Student student = studentService.findByUserId(user.getId());
-            StudentGroup group = studentGroupService.findByStudentId(student.getId());
+            group = studentGroupService.findByStudentId(student.getId());
 
-            model.addAttribute("username", user.getUsername());
+            }
+            else group = null;
             model.addAttribute("group", group);
+            model.addAttribute("username", user.getUsername());
         }
 
 
@@ -57,13 +58,18 @@ public class UserStudentWebController {
 
     @RequestMapping("/subjects")
     public String subjects(Model model){
-            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Speciality speciality;
+        if(studentService.findByUserId(user.getId())!=null) {
             Student student = studentService.findByUserId(user.getId());
             StudentGroup group = studentGroupService.findByStudentId(student.getId());
+            speciality = group.getSpeciality();
 
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("speciality", group.getSpeciality());
 
+        }
+        else speciality = null;
+        model.addAttribute("speciality", speciality);
+        model.addAttribute("username", user.getUsername());
 
         return"student/subjects";
     }

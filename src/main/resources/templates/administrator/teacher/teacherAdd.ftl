@@ -6,11 +6,11 @@
 
     <legend>Add teacher</legend>
         <form name="teacher" action="" method="POST">
-            <br>Name:<@spring.formInput "teacherForm.name" "class='form-control'" "text"/>
+            <br>Name:<@spring.formInput "teacherForm.name" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Surname:<@spring.formInput "teacherForm.surname" "class='form-control'" "text"/>
+            <br>Surname:<@spring.formInput "teacherForm.surname" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Patronymic:<@spring.formInput "teacherForm.patronymic" "class='form-control'" "text"/>
+            <br>Patronymic:<@spring.formInput "teacherForm.patronymic" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>Date:<@spring.formInput "teacherForm.dateOfBirth", "class='from-control' readonly"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -22,21 +22,21 @@
             <br>Degree:<@spring.formSingleSelect "teacherForm.degree", degrees, "class='from-control' readonly"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
-            <br>Date of starting work as a teacher:<@spring.formInput "teacherForm.experience", "class='from-control'"/>
+            <br>Date of starting work as a teacher:<@spring.formInput "teacherForm.experience", "class='from-control' required"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <script>
                 $('#experience').datepicker({
                     uiLibrary: 'bootstrap4'
                 });
             </script>
-            <br>phone number:<@spring.formInput "teacherForm.phoneNumber" "class='form-control'" "text"/>
+            <br>phone number:<@spring.formInput "teacherForm.phoneNumber" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>subjects:<@spring.formCheckboxes "teacherForm.subjects", subjects "<br>"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>email:<@spring.formInput "teacherForm.username" "class='form-control'" "text"/>
+            <br>email:<@spring.formInput "teacherForm.username" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>password:<@spring.formInput "teacherForm.password" "class='form-control'" "text"/>
+            <br>password:<@spring.formInput "teacherForm.password" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
 

@@ -88,7 +88,7 @@ public class UserWebController {
             newRoles.add(newRole);
         }
 
-        User newUser = new User(userForm.getUsername(), userForm.getPassword(), newRoles, userForm.isAccountNonExpired(),userForm.isAccountNonLocked(), userForm.isCredentialsNonExpired(),userForm.isEnabled());
+        User newUser = new User(userForm.getUsername(), service.get(id).getPassword(), newRoles, service.get(id).isAccountNonExpired(),service.get(id).isAccountNonLocked(), service.get(id).isCredentialsNonExpired(),service.get(id).isEnabled());
         service.update(userForm);
         return "redirect:/admin/user/list";
     }

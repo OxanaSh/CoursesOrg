@@ -5,10 +5,10 @@
         <legend>Add user</legend>
         <form name="subject" action="" method="POST">
 
-            <br>username:<@spring.formInput "userForm.username" "class='form-control'" "text"/>
+            <br>username:<@spring.formInput "userForm.username" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>password:<@spring.formInput "userForm.password" "class='form-control'" "text"/>
+            <br>password:<@spring.formInput "userForm.password" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
             <@spring.formCheckboxes "userForm.authorities", roles "<br>"/>

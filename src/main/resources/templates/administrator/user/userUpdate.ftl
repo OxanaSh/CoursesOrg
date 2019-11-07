@@ -6,7 +6,7 @@
         <legend>Update user</legend>
         <form name="user" action="" method="POST">
 
-            <br>username:<@spring.formInput "userForm.username" "class='form-control'" "text"/>
+            <br>username:<@spring.formInput "userForm.username" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <@spring.formCheckboxes "userForm.authorities", roles "<br>"/>

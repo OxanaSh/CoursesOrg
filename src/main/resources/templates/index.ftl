@@ -26,12 +26,17 @@
     <#if isAuthenticated>
         <#list roles as role>
             <#if role == "ADMIN">
-            <div class="container"><a href="/admin/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Administrator menu</a>
-            </div></#if>
+            <li>
+                <div class="container"><a href="/admin/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Administrator menu</a>
+            </div>
+            </li>
+            </#if>
             <#if role == "USER_STUDENT">
+            <li>
             <div class="container">
                 <a href="/student/user/" style="padding: 6px 8px 6px 16px;text-decoration: none;font-size: 20px;color: #818181; display: block;">Student menu</a>
             </div>
+            </li>
             </#if>
         </#list>
 

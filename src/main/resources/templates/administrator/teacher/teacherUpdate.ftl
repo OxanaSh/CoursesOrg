@@ -4,11 +4,11 @@
     <div class="container" style="border: 2px solid black; padding: 20px 20px">
 <legend>Update teacher information</legend>
         <form name="student" action="" method="POST">
-            <br>Name:<@spring.formInput "teacherForm.name" "class='form-control'" "text"/>
+            <br>Name:<@spring.formInput "teacherForm.name" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Surname:<@spring.formInput "teacherForm.surname" "class='form-control'" "text"/>
+            <br>Surname:<@spring.formInput "teacherForm.surname" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <br>Patronymic:<@spring.formInput "teacherForm.patronymic" "class='form-control'" "text"/>
+            <br>Patronymic:<@spring.formInput "teacherForm.patronymic" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br>Date:<@spring.formInput "teacherForm.dateOfBirth", "class='from-control' readonly"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -27,13 +27,13 @@
                     uiLibrary: 'bootstrap4'
                 });
             </script>
-            <br>phone number:<@spring.formInput "teacherForm.phoneNumber" "class='form-control'" "text"/>
+            <br>phone number:<@spring.formInput "teacherForm.phoneNumber" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>subjects:<br>
             <@spring.formCheckboxes "teacherForm.subjects", subjects "<br>"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <br>email:<@spring.formInput "teacherForm.username" "class='form-control'" "text"/>
+            <br>email:<@spring.formInput "teacherForm.username" "class='form-control' required" "text"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <br/>
 
