@@ -11,7 +11,7 @@
     <link rel="icon" href="/images/catIcon.png" type="image/png" >
 </head>
 <style>
-    li{
+    ul{
         list-style-type: none;
     }
 </style>
@@ -30,6 +30,7 @@
 
 
     <#if isAuthenticated>
+        <ul>
         <#list roles as role>
             <#if role == "ADMIN">
             <li>
@@ -45,7 +46,7 @@
             </li>
             </#if>
         </#list>
-
+        </ul>
         <form action="/logout" method="POST">
         <input type="submit" class="btn btn-dark" value="Sign out">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
