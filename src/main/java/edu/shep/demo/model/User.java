@@ -50,6 +50,18 @@ public class User implements UserDetails {
         this.enabled = true;
     }
 
+    public User(String id, String username, String password, List<Role> authorities, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean isEnabled) {
+        this.id = id;
+        this.username = username;
+        this.authorities = authorities;
+        this.password = password;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = isEnabled;
+    }
+
+
     public User(String username, String password, List<Role> authorities, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean enabled) {
         this.username = username;
         this.authorities = authorities;
