@@ -10,6 +10,12 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" href="/images/catIcon.png" type="image/png" >
 </head>
+<style>
+    li{
+        list-style-type: none;
+    }
+</style>
+
 <body>
 
 <nav class="navbar navbar-light sticky-top" style="background-color: #f2f2f2; border-bottom: 2px solid black;" >
