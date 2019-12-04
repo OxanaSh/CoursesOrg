@@ -89,7 +89,7 @@ public class UserWebController {
         }
 
         User newUser = new User(userForm.getUsername(), service.get(id).getPassword(), newRoles, true,true, true, service.get(id).isEnabled());
-        service.update(userForm);
+        service.update(newUser);
         return "redirect:/admin/user/list";
     }
 
